@@ -16,6 +16,7 @@
             --pink-soft: rgba(231, 0, 94, 0.04);
             --pink-hover: rgba(231, 0, 94, 0.08);
             --border: #EAEAEA;
+            --classic-link: #0000EE;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -28,16 +29,19 @@
         .bg-gray { background-color: var(--bg-gray); }
         
         header { display: flex; justify-content: space-between; align-items: center; padding: 24px 5%; background: var(--bg-white); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
-        .header-left { display: flex; align-items: center; gap: 30px; }
-        
-        .lang-switch { display: flex; gap: 10px; font-size: 0.85rem; background: var(--bg-gray); padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border); }
-        .lang-switch button { background: none; border: none; cursor: pointer; color: var(--text-gray); font-weight: 600; font-family: 'Inter', sans-serif; }
-        .lang-switch button.active { color: var(--pink); }
+        .header-left { display: flex; align-items: center; }
+        .header-right { display: flex; align-items: center; gap: 30px; }
         
         .logo-text { font-family: 'Poppins', sans-serif; font-size: 1.2rem; color: var(--text-dark); }
+        
         nav ul { list-style: none; display: flex; gap: 25px; }
         nav ul li a { color: var(--text-gray); font-size: 0.95rem; font-weight: 500; }
-        nav ul li a:hover, .card a { color: var(--pink); }
+        nav ul li a:hover, .card a:not(.classic-link) { color: var(--pink); }
+
+        /* Lang switch with softer rounding (8px) */
+        .lang-switch { display: flex; gap: 10px; font-size: 0.85rem; background: var(--bg-gray); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); }
+        .lang-switch button { background: none; border: none; cursor: pointer; color: var(--text-gray); font-weight: 600; font-family: 'Inter', sans-serif; }
+        .lang-switch button.active { color: var(--pink); }
 
         /* ================= HERO ================= */
         .hero { display: flex; align-items: center; justify-content: space-between; background: var(--pink); padding: 80px 10%; min-height: 50vh; color: white; gap: 40px; }
@@ -57,6 +61,8 @@
         .card:hover { background: var(--pink-hover); transform: translateY(-5px); }
         .card h3 { font-size: 1.3rem; color: var(--pink); margin-bottom: 15px; font-weight: 600; }
         .card p { color: var(--text-gray); font-size: 0.95rem; }
+        
+        .classic-link { color: var(--classic-link); text-decoration: underline; font-weight: 600; }
 
         /* ================= TIMELINES ================= */
         .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
@@ -68,8 +74,7 @@
         .time-block h4 { font-size: 1.1rem; margin-bottom: 10px; color: var(--text-dark); }
         .time-block p { font-size: 0.9rem; color: var(--text-gray); }
         
-        .tracking-bar { margin-top: 20px; background: var(--text-dark); color: var(--bg-white); text-align: center; padding: 15px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px; }
-        .tracking-bar.seo-bar { background: var(--bg-gray); color: var(--text-dark); border: 1px dashed var(--border); font-weight: 500; }
+        .tracking-bar { margin-top: 20px; background: var(--text-dark); color: var(--bg-white); text-align: center; padding: 15px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px; line-height: 1.5; }
 
         /* ================= DELIVERABLES & BUDGET COMBO ================= */
         .deliv-budget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
@@ -82,15 +87,12 @@
         ul.custom-list li { position: relative; padding-left: 25px; margin-bottom: 15px; color: var(--text-gray); font-size: 0.95rem; }
         ul.custom-list li::before { content: '✓'; position: absolute; left: 0; color: var(--pink); font-weight: bold; }
 
-        /* Right: Budget */
-        .budget-card { background: var(--bg-gray); border: 1px solid var(--border); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; }
-        .budget-card > h3 { font-size: 1.5rem; margin-bottom: 25px; font-weight: 600; }
-        ul.budget-list { list-style: none; margin-bottom: 30px; }
-        ul.budget-list li { position: relative; padding-left: 20px; margin-bottom: 12px; color: var(--text-gray); font-size: 0.95rem; }
-        ul.budget-list li::before { content: '→'; position: absolute; left: 0; color: var(--text-dark); font-weight: bold; }
+        /* Right: Budget (Refactored to center gracefully without lists) */
+        .budget-card { background: var(--bg-gray); border: 1px solid var(--border); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .budget-card > h3 { font-size: 1.5rem; margin-bottom: 30px; font-weight: 600; text-align: center; }
         
-        .price-breakdown { margin-top: auto; padding-top: 30px; border-top: 1px solid var(--border); }
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--text-gray); }
+        .price-breakdown { padding-top: 20px; border-top: 1px solid var(--border); width: 100%; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--text-gray); font-size: 1.05rem;}
         .price-row.total { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-dark); color: var(--text-dark); font-weight: 700; font-size: 1.8rem; align-items: center; letter-spacing: -0.5px; }
 
         /* ================= INSIGHTS DIVIDER ================= */
@@ -100,7 +102,7 @@
         .insights-divider strong { color: var(--text-dark); }
 
         /* ================= LEGAL & DISCLAIMERS ================= */
-        .info-box { background: var(--bg-gray); border-left: 4px solid var(--text-dark); padding: 30px; border-radius: 8px; margin-top: 60px; }
+        .info-box { background: var(--bg-white); border: 1px solid var(--border); border-left: 4px solid var(--text-dark); padding: 30px; border-radius: 8px; margin-top: 60px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
         .info-box h4 { font-size: 1.2rem; margin-bottom: 10px; color: var(--text-dark); }
         .info-box p { color: var(--text-gray); font-size: 0.95rem; }
 
@@ -111,8 +113,10 @@
         /* ================= MOBILE ================= */
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 20px; padding: 20px 5%; }
-            .header-left { flex-direction: column; width: 100%; }
+            .header-left { align-items: center; }
+            .header-right { flex-direction: column; gap: 20px; }
             nav ul { justify-content: center; flex-wrap: wrap; gap: 15px; }
+            
             .hero { flex-direction: column; text-align: center; padding: 60px 5%; gap: 30px; }
             .hero-right h1 { font-size: 2.2rem; }
             section { padding: 60px 5%; }
@@ -130,27 +134,29 @@
 
     <header>
         <div class="header-left">
+            <a href="#" class="logo-text">Loop Development</a>
+        </div>
+        <div class="header-right">
+            <nav>
+                <ul>
+                    <li><a href="#seo">SEO</a></li>
+                    <li><a href="#sem">SEM</a></li>
+                    <li><a href="#bot">ChatBot</a></li>
+                </ul>
+            </nav>
             <div class="lang-switch">
                 <button onclick="setLang('es')" id="btn-es" class="active">ESP</button> | 
                 <button onclick="setLang('en')" id="btn-en">ENG</button>
             </div>
-            <a href="#" class="logo-text">Loop Development</a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#seo">SEO</a></li>
-                <li><a href="#sem">SEM</a></li>
-                <li><a href="#bot">BOT</a></li>
-            </ul>
-        </nav>
     </header>
 
     <div class="hero">
         <div class="hero-left"><img src="Logo.png" alt="Inteligencia Turística"></div>
         <div class="hero-right">
             <h1>
-                <span class="lang es">Propuesta Estratégica<br>Chatbot Interactivo + SEO, Analítica y SEM</span>
-                <span class="lang en hidden">Strategic Proposal<br>Interactive Chatbot + SEO, Analytics & SEM</span>
+                <span class="lang es">Propuesta Estratégica de SEO, SEM y Desarrollo de<br>Chatbot Interactivo</span>
+                <span class="lang en hidden">Strategic Proposal for SEO, SEM &<br>Interactive Chatbot Development</span>
             </h1>
         </div>
     </div>
@@ -158,43 +164,39 @@
     <section id="seo">
         <div class="section-header">
             <h2><span class="lang es">Fase 1: Estudio SEO y de Mercado</span><span class="lang en hidden">Phase 1: SEO & Market Study</span></h2>
-            <p><span class="lang es">Análisis de tendencias reales para saber qué buscan los actores del sector turístico, cuándo lo buscan y preparar la base de la estrategia.</span><span class="lang en hidden">Analysis of real trends to know what tourism stakeholders are searching for, when, and to prepare the base strategy.</span></p>
+            <p><span class="lang es">Análisis de tendencias reales de Google para saber qué se busca en el sector turístico, cuándo se busca y preparar la base de la estrategia extrayendo cientos de keywords clave.</span><span class="lang en hidden">Analysis of real Google trends to know what is searched in the tourism sector, when it's searched, and to prepare the strategy baseline by extracting hundreds of key keywords.</span></p>
         </div>
 
         <div class="grid-container">
             <div class="card">
                 <h3><span class="lang es">Intención de Búsqueda</span><span class="lang en hidden">Search Intent</span></h3>
-                <p><span class="lang es">Filtramos términos informacionales vs. transaccionales para encontrar alto volumen y baja competencia B2B.</span><span class="lang en hidden">We filter informational vs. transactional terms to find high volume and low B2B competition.</span></p>
+                <p><span class="lang es">Extraemos cientos de búsquedas de keywords en Google. Filtramos términos informacionales vs. transaccionales para encontrar alto volumen y baja competencia B2B.</span><span class="lang en hidden">We extract hundreds of Google keyword searches. We filter informational vs. transactional terms to find high volume and low B2B competition.</span></p>
             </div>
             <div class="card">
                 <h3><span class="lang es">Análisis de Competencia</span><span class="lang en hidden">Competitor Analysis</span></h3>
-                <p><span class="lang es">Auditamos competidores en Google Search. Analizamos sus pujas y detectamos huecos de mercado aprovechables.</span><span class="lang en hidden">We audit competitors on Google. We analyze their bids and detect exploitable market gaps.</span></p>
+                <p><span class="lang es">Auditamos competidores en Google Search. Analizamos sus pujas, estrategias y detectamos huecos de mercado aprovechables.</span><span class="lang en hidden">We audit competitors on Google Search. We analyze their bids, strategies, and detect exploitable market gaps.</span></p>
             </div>
             <div class="card">
                 <h3><span class="lang es">Estacionalidad (Trends)</span><span class="lang en hidden">Seasonality (Trends)</span></h3>
-                <p><span class="lang es">Analizamos qué buscan las empresas y cuándo para anticiparnos y preparar la estrategia de cada Quarter.</span><span class="lang en hidden">We analyze what businesses search for and when to anticipate and prepare the strategy for each Quarter.</span></p>
+                <p><span class="lang es">Analizamos qué se busca y cuándo para anticiparnos, entender los picos de demanda y preparar la estrategia de cada Quarter.</span><span class="lang en hidden">We analyze what is searched and when to anticipate, understand demand peaks, and prepare the strategy for each Quarter.</span></p>
             </div>
         </div>
 
         <div class="timeline-wrapper">
-            <h3><span class="lang es">Cronograma SEO (3-4 Semanas)</span><span class="lang en hidden">SEO Timeline (3-4 Weeks)</span></h3>
+            <h3><span class="lang es">Cronograma SEO (4 Semanas)</span><span class="lang en hidden">SEO Timeline (4 Weeks)</span></h3>
             <div class="timeline-flex">
                 <div class="time-block">
-                    <h4><span class="lang es">Semana 1</span><span class="lang en hidden">Week 1</span></h4>
-                    <p><span class="lang es">Extracción de Keywords e intención de búsqueda.</span><span class="lang en hidden">Keyword extraction and search intent analysis.</span></p>
+                    <h4><span class="lang es">Semanas 1 - 2</span><span class="lang en hidden">Weeks 1 - 2</span></h4>
+                    <p><span class="lang es">Extracción de cientos de keywords y análisis de volumen, intención de búsqueda y trends/estacionalidad.</span><span class="lang en hidden">Extraction of hundreds of keywords and analysis of volume, search intent, and trends/seasonality.</span></p>
                 </div>
                 <div class="time-block">
-                    <h4><span class="lang es">Semana 2</span><span class="lang en hidden">Week 2</span></h4>
-                    <p><span class="lang es">Auditoría de competencia y backlinks.</span><span class="lang en hidden">Competitor and backlink audit.</span></p>
+                    <h4><span class="lang es">Semana 3</span><span class="lang en hidden">Week 3</span></h4>
+                    <p><span class="lang es">Análisis de la competencia, sus perfiles de backlinks, sus webs y las palabras clave que atacan.</span><span class="lang en hidden">Competitor analysis, their backlink profiles, websites, and targeted keywords.</span></p>
                 </div>
                 <div class="time-block">
-                    <h4><span class="lang es">Semanas 3-4</span><span class="lang en hidden">Weeks 3-4</span></h4>
-                    <p><span class="lang es">Arquitectura web y redacción de Insights.</span><span class="lang en hidden">Web architecture and drafting of Insights.</span></p>
+                    <h4><span class="lang es">Semana 4</span><span class="lang en hidden">Week 4</span></h4>
+                    <p><span class="lang es">Juntar todos los datos, sacar Insights y redactar recomendaciones estratégicas para Inteligencia Turística.</span><span class="lang en hidden">Consolidate all data, extract Insights, and draft strategic recommendations for Inteligencia Turística.</span></p>
                 </div>
-            </div>
-            <div class="tracking-bar seo-bar">
-                <span class="lang es">Reunión de validación y entrega de documentación antes de avanzar.</span>
-                <span class="lang en hidden">Validation meeting and documentation delivery before proceeding.</span>
             </div>
         </div>
 
@@ -203,17 +205,12 @@
                 <h3><span class="lang es">Entregables SEO</span><span class="lang en hidden">SEO Deliverables</span></h3>
                 <ul class="custom-list">
                     <li><span class="lang es">Excels de Keywords: Volúmenes y Competencia.</span><span class="lang en hidden">Keyword Excels: Volumes and Competition.</span></li>
-                    <li><span class="lang es">PDF de Insights estratégicos.</span><span class="lang en hidden">Strategic Insights PDF.</span></li>
-                    <li><span class="lang es">Análisis de webs competidoras.</span><span class="lang en hidden">Competitor websites analysis.</span></li>
-                    <li><span class="lang es">Auditoría de Arquitectura Web y URLs.</span><span class="lang en hidden">Web Architecture Audit and URLs.</span></li>
+                    <li><span class="lang es">Auditoría y recomendaciones estratégicas para Inteligencia Turística (PDF).</span><span class="lang en hidden">Audit and strategic recommendations for Inteligencia Turística (PDF).</span></li>
+                    <li><span class="lang es">Análisis de webs competidoras, Arquitectura Web, URLs y backlinks.</span><span class="lang en hidden">Competitor websites analysis, Web Architecture, URLs, and backlinks.</span></li>
                 </ul>
             </div>
             <div class="budget-card">
                 <h3><span class="lang es">Presupuesto SEO</span><span class="lang en hidden">SEO Budget</span></h3>
-                <ul class="budget-list">
-                    <li><span class="lang es">Estudio integral de palabras clave</span><span class="lang en hidden">Comprehensive keyword study</span></li>
-                    <li><span class="lang es">Documento de Insights y recomendaciones</span><span class="lang en hidden">Insights & recommendations doc</span></li>
-                </ul>
                 <div class="price-breakdown">
                     <div class="price-row"><span><span class="lang es">Base Imponible</span><span class="lang en hidden">Subtotal</span></span><span>0€</span></div>
                     <div class="price-row"><span><span class="lang es">IVA (21%)</span><span class="lang en hidden">VAT (21%)</span></span><span>0€</span></div>
@@ -237,7 +234,7 @@
         <div class="grid-container">
             <div class="card">
                 <h3><span class="lang es">1. Promo 400€ + 400€</span><span class="lang en hidden">1. Promo €400 + €400</span></h3>
-                <p><span class="lang es">Ventajas Google Partner: invirtiendo 400€ desbloqueamos 400€ extra.</span><span class="lang en hidden">Google Partner benefits: investing €400 unlocks €400 extra.</span></p>
+                <p><span class="lang es">Ventajas <a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a>: invirtiendo 400€ en 60 días, Google nos regala otros 400€ de crédito para gastar.</span><span class="lang en hidden"><a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a> benefits: investing €400 in 60 days, Google gifts us another €400 in ad credit.</span></p>
             </div>
             <div class="card">
                 <h3><span class="lang es">2. Setup Analítica</span><span class="lang en hidden">2. Analytics Setup</span></h3>
@@ -245,7 +242,7 @@
             </div>
             <div class="card">
                 <h3><span class="lang es">3. Lanzamiento SEM</span><span class="lang en hidden">3. SEM Launch</span></h3>
-                <p><span class="lang es">Campañas Ads basadas en keywords transaccionales orientadas a conversión.</span><span class="lang en hidden">Ads campaigns based on transactional keywords focused on conversion.</span></p>
+                <p><span class="lang es">Campañas Ads basadas en keywords transaccionales orientadas puramente a conversión.</span><span class="lang en hidden">Ads campaigns based on transactional keywords focused purely on conversion.</span></p>
             </div>
         </div>
 
@@ -254,24 +251,24 @@
             <div class="timeline-flex">
                 <div class="time-block">
                     <h4><span class="lang es">Semana 1</span><span class="lang en hidden">Week 1</span></h4>
-                    <p><span class="lang es">Setup Analítica y diseño de campaña.</span><span class="lang en hidden">Analytics Setup and campaign design.</span></p>
+                    <p><span class="lang es">Setup Analítica, creación de Funnel y diseño de campaña.</span><span class="lang en hidden">Analytics Setup, Funnel creation, and campaign design.</span></p>
                 </div>
                 <div class="time-block">
                     <h4><span class="lang es">Días 1 - 60</span><span class="lang en hidden">Days 1 - 60</span></h4>
-                    <p><span class="lang es">Fase Inicial (400€) para cumplir la promo.</span><span class="lang en hidden">Initial Phase (€400) to meet the promo.</span></p>
+                    <p><span class="lang es">Fase Inicial (400€) para cumplir los requisitos de la promo.</span><span class="lang en hidden">Initial Phase (€400) to meet the promo requirements.</span></p>
                 </div>
                 <div class="time-block pause-block">
                     <h4><span class="lang es">Pausa Técnica</span><span class="lang en hidden">Technical Pause</span></h4>
-                    <p><span class="lang es">Validación de crédito (1-2 semanas).</span><span class="lang en hidden">Credit validation (1-2 weeks).</span></p>
+                    <p><span class="lang es">Validación de crédito de Google (1-2 semanas).</span><span class="lang en hidden">Google credit validation (1-2 weeks).</span></p>
                 </div>
                 <div class="time-block">
                     <h4><span class="lang es">Días 61 - 120</span><span class="lang en hidden">Days 61 - 120</span></h4>
-                    <p><span class="lang es">Fase Crédito (400€ regalados).</span><span class="lang en hidden">Credit Phase (€400 gift).</span></p>
+                    <p><span class="lang es">Fase Crédito (400€ regalados maximizando visibilidad).</span><span class="lang en hidden">Credit Phase (€400 gift maximizing visibility).</span></p>
                 </div>
             </div>
             <div class="tracking-bar">
-                <span class="lang es">Tracking, Optimización y Tests A/B activos durante toda la campaña</span>
-                <span class="lang en hidden">Tracking, Optimization, and A/B Tests active throughout the campaign</span>
+                <span class="lang es">Tracking, Optimización y Tests A/B activos durante toda la campaña, con reportes mensuales y llamadas de seguimiento semanales o quincenales según necesidades del proyecto.</span>
+                <span class="lang en hidden">Tracking, Optimization, and A/B Tests active throughout the campaign, with monthly reports and weekly or bi-weekly follow-up calls as needed by the project.</span>
             </div>
         </div>
 
@@ -287,10 +284,6 @@
             </div>
             <div class="budget-card">
                 <h3><span class="lang es">Presupuesto SEM</span><span class="lang en hidden">SEM Budget</span></h3>
-                <ul class="budget-list">
-                    <li><span class="lang es">Setup de Analítica (GA4 & GTM)</span><span class="lang en hidden">Analytics Setup (GA4 & GTM)</span></li>
-                    <li><span class="lang es">Tracking, Optimización y Tests (4-5 meses)</span><span class="lang en hidden">Tracking & Optimization (4-5 mo)</span></li>
-                </ul>
                 <div class="price-breakdown">
                     <div class="price-row"><span><span class="lang es">Base Imponible</span><span class="lang en hidden">Subtotal</span></span><span>0€</span></div>
                     <div class="price-row"><span><span class="lang es">IVA (21%)</span><span class="lang en hidden">VAT (21%)</span></span><span>0€</span></div>
@@ -334,7 +327,7 @@
                 </div>
                 <div class="time-block">
                     <h4><span class="lang es">Fase 3</span><span class="lang en hidden">Phase 3</span></h4>
-                    <p><span class="lang es">[Testing y despliegue final]</span><span class="lang en hidden">[Testing & final deployment]</span></p>
+                    <p><span class="lang es">[Testing y puesta en producción final]</span><span class="lang en hidden">[Testing & final production deployment]</span></p>
                 </div>
             </div>
         </div>
@@ -350,10 +343,6 @@
             </div>
             <div class="budget-card">
                 <h3><span class="lang es">Presupuesto BOT</span><span class="lang en hidden">BOT Budget</span></h3>
-                <ul class="budget-list">
-                    <li><span class="lang es">Desarrollo integral e integraciones</span><span class="lang en hidden">Full development and integrations</span></li>
-                    <li><span class="lang es">Testing y puesta en producción</span><span class="lang en hidden">Testing and deployment</span></li>
-                </ul>
                 <div class="price-breakdown">
                     <div class="price-row"><span><span class="lang es">Base Imponible</span><span class="lang en hidden">Subtotal</span></span><span>0€</span></div>
                     <div class="price-row"><span><span class="lang es">IVA (21%)</span><span class="lang en hidden">VAT (21%)</span></span><span>0€</span></div>
@@ -374,7 +363,7 @@
             <p><span class="lang es">Condiciones de ejecución de la propuesta técnica.</span><span class="lang en hidden">Execution conditions for the technical proposal.</span></p>
         </div>
 
-        <div class="info-box" style="border-left-color: var(--pink); margin-top: 0;">
+        <div class="info-box" style="margin-top: 0;">
             <ul class="custom-list" style="margin-top: 10px;">
                 <li>
                     <strong style="color: var(--text-dark);"><span class="lang es">Costes de Terceros:</span><span class="lang en hidden">Third-Party Costs:</span></strong> 
