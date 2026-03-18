@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propuesta Estrategia Digital | Inteligencia Turística</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Propuesta Estratégica | Inteligencia Turística x Loop Development</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-bg: #FAFAFA;
-            --card-bg: #FFFFFF;
+            --primary-bg: #FFFFFF;
+            --section-bg: #FAFAFA;
             --text-main: #1A1A1A;
             --text-muted: #666666;
-            --accent-color: #E7005E; /* Color extraído de la imagen */
-            --accent-light: #FDF0F5;
+            --brand-pink: #E7005E;
+            --brand-pink-soft: rgba(231, 0, 94, 0.04);
+            --brand-pink-hover: rgba(231, 0, 94, 0.08);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -26,265 +30,288 @@
             background-color: var(--primary-bg);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 40px 20px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
+        /* HEADER / NAV */
         header {
-            text-align: center;
-            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 5%;
+            background-color: var(--primary-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--brand-pink);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--brand-pink);
+            padding: 80px 10%;
+            min-height: 60vh;
+            color: white;
+            gap: 40px;
+        }
+
+        .hero-left {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-left img {
+            max-width: 250px;
+            /* Si el logo no es blanco por defecto, esto lo fuerza a blanco: */
+            filter: brightness(0) invert(1); 
+        }
+
+        .hero-right {
+            flex: 1.5;
+        }
+
+        .hero-right h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        /* COMMON SECTION STYLES */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            max-width: 700px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
             letter-spacing: -0.5px;
         }
 
-        header p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            font-weight: 300;
-        }
-
-        .intro {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            margin-bottom: 50px;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .intro p {
+        .section-header p {
             font-size: 1.1rem;
             color: var(--text-muted);
         }
 
-        /* TIMELINE STYLES */
-        .timeline {
-            position: relative;
-            margin: 0 auto;
-            padding: 20px 0;
+        /* GRID CARDS (SEO & MARKETING) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #E0E0E0;
+        .card {
+            background-color: var(--brand-pink-soft);
+            padding: 40px 30px;
+            border-radius: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 1px solid rgba(231, 0, 94, 0.05);
         }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 50px;
-            padding-left: 60px;
+        .card:hover {
+            background-color: var(--brand-pink-hover);
+            transform: translateY(-5px);
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 12px;
-            top: 5px;
-            width: 18px;
-            height: 18px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            border: 4px solid var(--primary-bg);
-            box-shadow: 0 0 0 2px var(--accent-color);
-        }
-
-        .timeline-content {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-        }
-
-        .timeline-content h2 {
-            font-size: 1.4rem;
-            font-weight: 600;
+        .card h3 {
+            font-size: 1.3rem;
+            color: var(--brand-pink);
             margin-bottom: 15px;
-            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .placeholder-img {
+            width: 100%;
+            height: 150px;
+            background-color: #FFFFFF;
+            border: 1px dashed rgba(231, 0, 94, 0.3);
+            border-radius: 8px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            color: #999;
+            font-size: 0.85rem;
         }
 
-        .timeline-content h2 span {
-            font-size: 0.8rem;
-            background-color: var(--accent-light);
-            color: var(--accent-color);
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
-
-        .timeline-content p.subtitle {
-            font-style: italic;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #EEEEEE;
-        }
-
-        .timeline-content ul {
-            list-style: none;
-        }
-
-        .timeline-content ul li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 12px;
-            color: var(--text-main);
-            font-size: 0.95rem;
-        }
-
-        .timeline-content ul li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        .placeholder-box {
-            background-color: #F5F5F5;
-            border: 1px dashed #CCCCCC;
-            border-radius: 8px;
-            padding: 30px;
+        /* INSIGHTS DIVIDER */
+        .insights-divider {
+            background-color: var(--text-main);
+            color: white;
             text-align: center;
-            color: #999999;
-            margin-top: 20px;
+            padding: 80px 10%;
+            margin: 40px 5%;
+            border-radius: 24px;
+        }
+
+        .insights-divider h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--brand-pink);
+        }
+
+        .insights-divider p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #E0E0E0;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--section-bg);
+            padding: 40px 10%;
+            text-align: center;
+            border-top: 1px solid #EEEEEE;
+        }
+
+        footer p {
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        .highlight {
-            background-color: var(--accent-light);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            border-left: 3px solid var(--accent-color);
-        }
-
-        .highlight p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: var(--text-main);
-        }
-
-        @media (max-width: 600px) {
-            .timeline::before {
-                left: 10px;
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 60px 5%;
             }
-            .timeline-item {
-                padding-left: 40px;
+            .hero-right h1 {
+                font-size: 2.2rem;
             }
-            .timeline-item::before {
-                left: 2px;
-            }
-            .timeline-content {
-                padding: 20px;
+            nav ul {
+                display: none; /* Simplificación para móvil en esta fase */
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Propuesta Estratégica</h1>
-            <p>SEO, Analítica y SEM para Inteligencia Turística</p>
-        </header>
+    <header>
+        <a href="#" class="logo-text">Loop Development</a>
+        <nav>
+            <ul>
+                <li><a href="#seo">1. Estudio Base</a></li>
+                <li><a href="#insights">2. Insights</a></li>
+                <li><a href="#marketing">3. Marketing & SEM</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div class="intro">
-            <p>Esta propuesta está diseñada para construir una base de datos sólida antes de invertir en captación. Primero entendemos cómo busca tu cliente ideal, preparamos la medición exacta de los resultados y, finalmente, lanzamos campañas de alta conversión basadas en datos reales del sector turístico.</p>
+    <div class="hero">
+        <div class="hero-left">
+            <img src="Logo.png" alt="Inteligencia Turística">
         </div>
-
-        <div class="timeline">
-            
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h2>Fase 1: Estudio SEO y de Mercado <span>Los Cimientos</span></h2>
-                    <p class="subtitle">No partimos de suposiciones. Extraemos datos reales para entender cómo, cuándo y desde dónde busca tu cliente ideal.</p>
-                    <ul>
-                        <li><strong>Análisis de Mercados Emisores:</strong> Identificamos de qué países o regiones provienen las búsquedas de mayor calidad.</li>
-                        <li><strong>Estudio de Estacionalidad:</strong> Mapeamos las tendencias para diferenciar el "Pico de Planificación" del "Pico de Viaje".</li>
-                        <li><strong>Cálculo del "Opportunity Score":</strong> Cruzamos volumen, competencia e intención de búsqueda.</li>
-                        <li><strong>Auditoría de Competencia:</strong> Análisis de competidores directos en Search y Maps.</li>
-                        <li><strong>Arquitectura Web (Insights):</strong> El estudio dictará qué nuevas secciones o landing pages debemos crear antes del SEM.</li>
-                    </ul>
-                    <div class="placeholder-box">
-                        [Aquí insertaremos la gráfica de Google Trends de Turismo]
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h2>Fase 2: SEO vs. SEM <span>Estrategia</span></h2>
-                    <p class="subtitle">El estudio nos indicará dónde invertir cada euro para maximizar rentabilidad.</p>
-                    <ul>
-                        <li><strong>Estrategia SEO (Medio Plazo):</strong> Keywords de alto volumen y baja competencia para contenidos y descubrimiento.</li>
-                        <li><strong>Estrategia SEM (Corto Plazo):</strong> Keywords 100% transaccionales para conversión inmediata, incluyendo Conquesting (robar tráfico a competencia).</li>
-                    </ul>
-                    <div class="placeholder-box">
-                        [Aquí insertaremos la tabla comparativa: Keyword Genérica vs. Keyword de Nicho]
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h2>Fase 3: Setup de Analítica <span>Medición Absoluta</span></h2>
-                    <p class="subtitle">Antes de gastar en anuncios, preparamos la web para rastrear cada acción de valor.</p>
-                    <ul>
-                        <li><strong>Google Analytics 4 (GA4):</strong> Creación, configuración y vinculación de la propiedad.</li>
-                        <li><strong>Google Tag Manager (GTM):</strong> Etiquetado de eventos clave (Clics en "Reservar", formularios, teléfono, emails).</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h2>Fase 4: Campaña SEM (4-5 meses) <span>Captación</span></h2>
-                    <p class="subtitle">Lanzamiento controlado para validar la conversión y optimizar costes.</p>
-                    <ul>
-                        <li><strong>A/B Testing:</strong> Pruebas de anuncios, textos y segmentaciones.</li>
-                        <li><strong>Decisión basada en datos:</strong> Rastrear el ROI para decidir cómo escalar el presupuesto.</li>
-                    </ul>
-                    <div class="highlight">
-                        <p><strong>Ventaja Google Partner:</strong> Invertimos 400€ en los primeros 60 días para desbloquear 400€ de crédito de Google. Resultado: <strong>800€ de impacto real</strong> con un coste de solo 400€.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h2>Fase 5: Reporting Mensual <span>Transparencia</span></h2>
-                    <p class="subtitle">Control total sobre el rendimiento de las campañas y el comportamiento del usuario.</p>
-                    <ul>
-                        <li>Coste por Clic (CPC) y volumen de clics totales.</li>
-                        <li>Métricas de comportamiento post-clic (qué hacen al entrar en la web).</li>
-                        <li>Métricas de conversión (Rutas hasta el contacto/cliente).</li>
-                        <li>Resultados y aprendizajes de los test A/B.</li>
-                    </ul>
-                </div>
-            </div>
-
+        <div class="hero-right">
+            <h1>Propuesta Estratégica<br>Chatbot Interactivo + SEO, Analítica y SEM</h1>
         </div>
     </div>
+
+    <section id="seo">
+        <div class="section-header">
+            <h2>Los Cimientos: Estudio SEO y de Mercado</h2>
+            <p>Antes de lanzar cualquier campaña, necesitamos entender el terreno. Analizamos tendencias reales de Google para saber qué busca el usuario, cuándo lo busca y qué está haciendo la competencia.</p>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h3>Estacionalidad y Google Trends</h3>
+                <p>El turismo vive de los tiempos. Identificamos los picos de búsqueda (cuando el usuario planifica) frente a los picos de viaje para saber exactamente cuándo encender los anuncios.</p>
+                <div class="placeholder-img">[Screenshot de Google Trends]</div>
+            </div>
+            
+            <div class="card">
+                <h3>Intención de Búsqueda</h3>
+                <p>No todas las keywords valen igual. Filtramos términos informacionales vs. transaccionales para encontrar el "Opportunity Score": alto volumen y baja competencia.</p>
+                <div class="placeholder-img">[Screenshot de Excel de Keywords]</div>
+            </div>
+
+            <div class="card">
+                <h3>Análisis de la Competencia</h3>
+                <p>Auditamos a los competidores en Google Search y Maps. Vemos por qué términos están pagando y detectamos huecos en el mercado que tu marca puede aprovechar.</p>
+                <div class="placeholder-img">[Screenshot de Competencia]</div>
+            </div>
+        </div>
+    </section>
+
+    <div id="insights" class="insights-divider">
+        <h2>De los Datos a la Acción (Insights)</h2>
+        <p>Este estudio no es solo un documento; es la hoja de ruta de la web. Los datos nos indicarán si, antes de activar el SEM, necesitamos crear nuevas secciones, añadir FAQs, ajustar la propuesta de valor o rediseñar landing pages específicas. Una vez la web esté lista para convertir de forma óptima, pasamos a la fase de Marketing.</p>
+    </div>
+
+    <section id="marketing">
+        <div class="section-header">
+            <h2>Fase de Marketing: Medición y Captación</h2>
+            <p>Una vez tenemos la estrategia y la web preparada, configuramos el ecosistema para que cada euro invertido sea rastreable y genere impacto real.</p>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h3>1. Setup de Analítica (GA4 & GTM)</h3>
+                <p>No hay marketing sin medición. Configuramos Google Analytics 4 y Google Tag Manager para trackear cada conversión: clics en reservas, formularios de contacto, llamadas y emails.</p>
+            </div>
+            
+            <div class="card">
+                <h3>2. Lanzamiento SEM y Copies</h3>
+                <p>Estructuramos las campañas de Google Ads basándonos en las keywords transaccionales del estudio SEO. Redactamos anuncios persuasivos orientados a la conversión directa.</p>
+            </div>
+
+            <div class="card">
+                <h3>3. Promo Google: 400€ + 400€</h3>
+                <p>Aprovechamos las ventajas de Google Partner: invertimos los primeros 400€ en 60 días para desbloquear 400€ de crédito gratuito. Consigues 800€ de impacto real a mitad de coste.</p>
+            </div>
+
+            <div class="card">
+                <h3>4. Tracking y A/B Testing (4-5 Meses)</h3>
+                <p>Dejamos correr la campaña analizando el Coste por Clic (CPC). Realizamos tests A/B constantes (probando diferentes textos y segmentaciones) y entregamos reportes mensuales de ROI.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Loop Development. Propuesta confidencial preparada para Inteligencia Turística.</p>
+    </footer>
 
 </body>
 </html>
