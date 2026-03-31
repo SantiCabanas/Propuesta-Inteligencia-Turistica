@@ -28,7 +28,6 @@
         /* ================= HEADER ================= */
         header { display: flex; justify-content: space-between; align-items: center; padding: 24px 5%; background: var(--bg-white); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
         .logo-text { font-family: 'Poppins', sans-serif; font-size: 1.2rem; color: var(--text-dark); }
-        
         .header-right { display: flex; align-items: center; gap: 30px; }
         
         nav ul { list-style: none; display: flex; gap: 25px; }
@@ -54,7 +53,7 @@
         .section-header p { font-size: 1.1rem; color: var(--text-gray); }
 
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: var(--pink-soft); padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(231, 0, 94, 0.05); transition: 0.3s ease; }
+        .card { background: var(--pink-soft); padding: 40px 30px; border-radius: 16px; border: 1px solid rgba(231, 0, 94, 0.05); transition: 0.3s ease; display: flex; flex-direction: column; }
         .card:hover { background: var(--pink-hover); transform: translateY(-5px); }
         .card h3 { font-size: 1.3rem; color: var(--pink); margin-bottom: 15px; font-weight: 600; }
         .card p { color: var(--text-gray); font-size: 0.95rem; }
@@ -70,16 +69,19 @@
         ul.custom-list li { position: relative; padding-left: 25px; margin-bottom: 15px; color: var(--text-gray); font-size: 0.95rem; }
         ul.custom-list li::before { content: '✓'; position: absolute; left: 0; color: var(--pink); font-weight: bold; }
 
+        /* Budget Card & Price Breakdown */
         .budget-card { background: var(--bg-gray); border: 1px solid var(--border); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
         .budget-card > h3 { font-size: 1.5rem; margin-bottom: 25px; font-weight: 600; text-align: center; }
         .price-breakdown { padding-top: 20px; border-top: 1px solid var(--border); width: 100%; }
         .price-row { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--text-gray); font-size: 1.05rem;}
         .price-row.total { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-dark); color: var(--text-dark); font-weight: 700; font-size: 1.8rem; align-items: center; letter-spacing: -0.5px; }
+        .payment-plan { margin-top: 20px; font-size: 0.85rem; color: var(--text-gray); border-top: 1px dashed var(--border); padding-top: 15px; }
+        .payment-plan strong { color: var(--text-dark); }
 
+        /* Timelines */
         .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
         .timeline-wrapper h3 { margin-bottom: 10px; font-size: 1.4rem; color: var(--text-dark); }
         .timeline-disclaimer { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 30px; padding-left: 15px; border-left: 3px solid var(--pink); font-style: italic; line-height: 1.5; }
-        
         .timeline-flex { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; }
         .time-block { flex: 1; min-width: 200px; background: var(--bg-gray); border-top: 4px solid var(--pink); padding: 25px 20px; border-radius: 0 0 8px 8px; }
         .time-block.pause-block { border-top-color: var(--text-gray); background: #F5F5F5; }
@@ -89,32 +91,26 @@
         .time-block p { font-size: 0.9rem; color: var(--text-gray); }
 
         .tracking-bar { margin-top: 20px; text-align: center; padding: 15px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px; line-height: 1.5; }
-        .tracking-bar.base-bar { background: var(--text-dark); color: var(--bg-white); }
         .tracking-bar.sem-bar { background: var(--bg-sem-gray); color: var(--text-dark); border: 1px solid var(--border); }
 
-        /* ================= GLOBAL TIMELINE ================= */
+        /* Global Timeline Chart */
         .global-timeline-container { background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); margin-top: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
         .gt-track { margin-bottom: 25px; }
-        .gt-track:last-child { margin-bottom: 0; }
         .gt-label { font-weight: 600; font-size: 1.1rem; color: var(--text-dark); margin-bottom: 10px; display: flex; justify-content: space-between; }
         .gt-label span.duration { font-size: 0.9rem; color: var(--text-gray); font-weight: 400; }
         .gt-bar-bg { width: 100%; background: var(--bg-gray); border-radius: 8px; height: 40px; position: relative; overflow: hidden; border: 1px solid var(--border); }
         .gt-bar { height: 100%; display: flex; align-items: center; padding-left: 15px; color: white; font-size: 0.85rem; font-weight: 600; position: absolute; top: 0; }
-        
-        .gt-bar.bot { background: var(--text-dark); width: 35%; z-index: 3; border-radius: 8px; left: 0; } /* 7 weeks */
-        
-        /* Divided Marketing Bar */
-        .gt-bar.seo { background: var(--pink); width: 20%; z-index: 2; border-radius: 8px 0 0 8px; left: 0; border-right: 2px solid white; } /* 1 month */
-        .gt-bar.sem { background: #A30043; width: 80%; left: 20%; z-index: 1; border-radius: 0 8px 8px 0; } /* 4 months */
-        
+        .gt-bar.bot { background: var(--text-dark); width: 35%; z-index: 3; border-radius: 8px; left: 0; }
+        .gt-bar.seo { background: var(--pink); width: 20%; z-index: 2; border-radius: 8px 0 0 8px; left: 0; border-right: 2px solid white; }
+        .gt-bar.sem { background: #A30043; width: 80%; left: 20%; z-index: 1; border-radius: 0 8px 8px 0; }
         .gt-markers { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.8rem; color: var(--text-gray); padding: 0 5px; }
 
-        /* ================= RECOMMENDATIONS BLOCK ================= */
+        /* Recommendations Block */
         .recommendations-block { background: var(--pink); text-align: center; padding: 80px 10%; margin: 60px 0 0 0; border-radius: 16px; box-shadow: 0 10px 40px rgba(231, 0, 94, 0.1); }
         .recommendations-block h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 25px; color: white; letter-spacing: -0.5px; }
         .recommendations-block p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; color: white; line-height: 1.8; font-weight: 500; }
 
-        /* ================= LEGAL & DISCLAIMED INFO ================= */
+        /* Legal Info Boxes */
         .info-box { background: var(--bg-white); border: 1px solid var(--border); border-left: 4px solid var(--text-dark); padding: 30px; border-radius: 8px; margin-top: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
         .info-box h4 { font-size: 1.2rem; margin-bottom: 10px; color: var(--text-dark); }
         .info-box p { color: var(--text-gray); font-size: 0.95rem; }
@@ -127,31 +123,17 @@
         /* ================= MOBILE OPTIMIZATION ================= */
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 20px; padding: 20px 5%; align-items: center; }
-            .header-left { align-items: center; }
-            .logo-text { font-size: 1.1rem; }
-            
             .header-right { flex-direction: column; gap: 20px; width: 100%; align-items: center; }
-            
             nav ul { justify-content: center; flex-wrap: wrap; gap: 12px; }
-            nav ul li a { font-size: 0.85rem; }
-            
             .hero { flex-direction: column; text-align: center; padding: 60px 5%; gap: 30px; }
             .hero-right h1 { font-size: 2.2rem; }
-            
             section { padding: 60px 5%; }
-            .section-header h2 { font-size: 1.8rem; }
-            
-            .recommendations-block { padding: 50px 5%; margin: 60px 0 0 0; border-radius: 12px; }
-            .recommendations-block h2 { font-size: 1.8rem; }
-            
             .grid-container, .deliv-budget-grid { grid-template-columns: 1fr; gap: 20px; }
             .budget-card, .entregables-col, .timeline-wrapper, .global-timeline-container { padding: 25px 20px; }
-            
             .timeline-flex { flex-direction: column; gap: 15px; }
             .time-block { border-top: none; border-left: 4px solid var(--pink); border-radius: 0 8px 8px 0; padding: 20px 15px; }
             .time-block.pause-block { border-top-color: transparent; border-left-color: var(--text-gray); }
-            
-            .gt-bar span { display: none; } /* Hide text inside bars on mobile for cleaner look */
+            .gt-bar span { display: none; } 
         }
     </style>
 </head>
@@ -189,21 +171,24 @@
     <section id="bot">
         <div class="section-header">
             <h2><span class="lang es">Desarrollo de Chatbot Interactivo</span><span class="lang en hidden">Interactive Chatbot Development</span></h2>
-            <p><span class="lang es">Automatización de atención al cliente y flujos de captación integrando una IA que domina al 100% todo el contenido, servicios y conocimiento de la empresa.</span><span class="lang en hidden">Customer service and lead generation automation integrating an AI that 100% masters all company content, services, and knowledge.</span></p>
+            <p><span class="lang es">Automatización de atención al cliente y flujos de captación integrando una IA que domina al 100% todo el conocimiento de la empresa.</span><span class="lang en hidden">Customer service and lead generation automation integrating an AI that 100% masters all company knowledge.</span></p>
         </div>
 
         <div class="grid-container">
             <div class="card">
                 <h3><span class="lang es">Alcance del Proyecto</span><span class="lang en hidden">Project Scope</span></h3>
-                <p><span class="lang es">El chatbot indexará toda la información de la web: el marketplace, casos de éxito, escuela IT, actualidad y servicios corporativos. Responderá de forma precisa basándose únicamente en vuestros datos.</span><span class="lang en hidden">The chatbot will index all website information: the marketplace, success stories, IT school, news, and corporate services. It will answer precisely based solely on your data.</span></p>
+                <p><span class="lang es">El chatbot indexará toda la información de la web: marketplace, escuela IT, casos de éxito y actualidad. Responderá de forma precisa basándose únicamente en vuestros datos, sin inventar información externa.</span><span class="lang en hidden">The chatbot will index all website info: marketplace, IT school, success stories, and news. It will answer precisely based solely on your data, without hallucinating external info.</span></p>
             </div>
             <div class="card">
                 <h3><span class="lang es">Arquitectura (RAG)</span><span class="lang en hidden">Architecture (RAG)</span></h3>
-                <p><span class="lang es">Implementaremos un sistema avanzado: Extraeremos el contenido de WordPress, lo almacenaremos en una Base de Datos Vectorial para búsquedas semánticas, y conectaremos el motor de IA mediante un widget.</span><span class="lang en hidden">We will implement an advanced system: We will extract WordPress content, store it in a Vector Database for semantic searches, and connect the AI engine via a widget.</span></p>
+                <p><span class="lang es">Implementaremos un sistema avanzado: Extracción de contenido de WordPress, almacenamiento en Base de Datos Vectorial para búsquedas semánticas y conexión nativa con motores de IA (GPT, Gemini o Claude).</span><span class="lang en hidden">Advanced system: WordPress content extraction, Vector Database storage for semantic searches, and native connection to AI engines (GPT, Gemini, or Claude).</span></p>
             </div>
             <div class="card">
-                <h3><span class="lang es">Selección de Modelo de IA</span><span class="lang en hidden">AI Model Selection</span></h3>
-                <p><span class="lang es">Evaluaremos los motores de OpenAI (GPT), Google (Gemini) y Anthropic (Claude) para determinar cuál ofrece el mejor rendimiento, precisión y rentabilidad para el volumen de consultas del proyecto.</span><span class="lang en hidden">We will evaluate OpenAI (GPT), Google (Gemini), and Anthropic (Claude) engines to determine which offers the best performance, precision, and cost-efficiency for the project's query volume.</span></p>
+                <h3><span class="lang es">Flujo de Información</span><span class="lang en hidden">Information Flow</span></h3>
+                <p>
+                    <span class="lang es">Actúa como filtro inteligente identificando intención y capturando datos (nombre, email, empresa). La info se canaliza vía email al equipo comercial y se registra en una base de datos propia (Supabase/Postgres) lista para CRM.</span>
+                    <span class="lang en hidden">Acts as a smart filter identifying intent and capturing data (name, email, company). Info is channeled via email to sales and logged in a dedicated database (Supabase/Postgres) ready for CRM.</span>
+                </p>
             </div>
         </div>
 
@@ -223,7 +208,7 @@
                 <div class="time-block">
                     <h4><span class="lang es">Semana 6</span><span class="lang en hidden">Week 6</span></h4>
                     <span class="promo-subheader"><span class="lang es">Ajuste Fino y Feedback</span><span class="lang en hidden">Fine-Tuning & Feedback</span></span>
-                    <p><span class="lang es">Fine tuning, ajuste de directrices (Prompting) y feedback exclusivo sobre la forma de hablar y tono del bot.</span><span class="lang en hidden">Fine tuning, prompting adjustments, and exclusive feedback on the bot's tone and way of speaking.</span></p>
+                    <p><span class="lang es">Fine tuning, ajuste de directrices (Prompting) y feedback sobre la forma de hablar y tono.</span><span class="lang en hidden">Fine tuning, prompting adjustments, and feedback on the bot's tone and way of speaking.</span></p>
                 </div>
                 <div class="time-block">
                     <h4><span class="lang es">Semana 7</span><span class="lang en hidden">Week 7</span></h4>
@@ -237,10 +222,10 @@
             <div class="entregables-col">
                 <h3><span class="lang es">Entregables</span><span class="lang en hidden">Deliverables</span></h3>
                 <ul class="custom-list">
-                    <li><span class="lang es"><strong>Software Propio:</strong> Código fuente completo y propiedad intelectual del sistema desarrollado.</span><span class="lang en hidden"><strong>Proprietary Software:</strong> Complete source code and intellectual property of the developed system.</span></li>
-                    <li><span class="lang es"><strong>Integración WP:</strong> Plugin configurado en vuestro panel y Widget de chat funcional.</span><span class="lang en hidden"><strong>WP Integration:</strong> Configured plugin in your dashboard and functional chat Widget.</span></li>
-                    <li><span class="lang es"><strong>Motor RAG:</strong> Base de datos vectorial poblada con los contenidos actuales de la web.</span><span class="lang en hidden"><strong>RAG Engine:</strong> Vector database populated with the website's current content.</span></li>
-                    <li><span class="lang es"><strong>Documentación:</strong> Manual técnico de arquitectura y manual de usuario/gestión de contenidos.</span><span class="lang en hidden"><strong>Documentation:</strong> Technical architecture manual and user/content management manual.</span></li>
+                    <li><span class="lang es"><strong>Software Propio:</strong> Código fuente completo y propiedad intelectual.</span><span class="lang en hidden"><strong>Proprietary Software:</strong> Complete source code and intellectual property.</span></li>
+                    <li><span class="lang es"><strong>Integración WP:</strong> Plugin configurado y Widget de chat funcional.</span><span class="lang en hidden"><strong>WP Integration:</strong> Configured plugin and functional chat Widget.</span></li>
+                    <li><span class="lang es"><strong>Motor RAG:</strong> Base de datos vectorial con los contenidos de la web.</span><span class="lang en hidden"><strong>RAG Engine:</strong> Vector database populated with website content.</span></li>
+                    <li><span class="lang es"><strong>Documentación:</strong> Manual técnico de arquitectura y manual de usuario.</span><span class="lang en hidden"><strong>Documentation:</strong> Technical architecture manual and user manual.</span></li>
                 </ul>
             </div>
             <div class="budget-card">
@@ -250,6 +235,10 @@
                     <div class="price-row"><span><span class="lang es">IVA (21%)</span><span class="lang en hidden">VAT (21%)</span></span><span>907,20€</span></div>
                     <div class="price-row total"><span>Total</span><span>5.227,20€</span></div>
                 </div>
+                <div class="payment-plan">
+                    <span class="lang es"><strong>Forma de pago:</strong> Plan por hitos técnicos. Activación inicial al firmar, pagos parciales por hitos y cierre tras puesta en producción.</span>
+                    <span class="lang en hidden"><strong>Payment plan:</strong> Technical milestone plan. Initial activation on signing, partial milestone payments, and final closing after production.</span>
+                </div>
             </div>
         </div>
     </section>
@@ -257,7 +246,7 @@
     <section id="seo" class="bg-gray">
         <div class="section-header">
             <h2><span class="lang es">Estudio SEO y de Mercado</span><span class="lang en hidden">SEO & Market Study</span></h2>
-            <p><span class="lang es">Análisis de tendencias reales de Google para saber qué se busca en el sector turístico, cuándo se busca y preparar la base de la estrategia extrayendo keywords clave.</span><span class="lang en hidden">Analysis of real Google trends to know what is searched in the tourism sector, when it's searched, and to prepare the strategy baseline by extracting key keywords.</span></p>
+            <p><span class="lang es">Análisis de tendencias reales de Google para saber qué se busca en el sector turístico y preparar la base de la estrategia.</span><span class="lang en hidden">Analysis of real Google trends to know what is searched in the tourism sector and prepare the strategy base.</span></p>
         </div>
 
         <div class="grid-container">
@@ -265,8 +254,8 @@
                 <h3><span class="lang es">Intención de Búsqueda</span><span class="lang en hidden">Search Intent</span></h3>
                 <p><span class="lang es">Extraemos cientos de búsquedas de keywords en Google. Filtramos términos informacionales vs. transaccionales para encontrar alto volumen y baja competencia B2B.</span><span class="lang en hidden">We extract hundreds of Google keyword searches. We filter informational vs. transactional terms to find high volume and low B2B competition.</span></p>
                 <span class="card-note">
-                    <span class="lang es">Ejemplo que comentamos de “pilates para embarazadas” o “taxi desde el aeropuerto” en el caso de un hotel.</span>
-                    <span class="lang en hidden">Example we discussed: “pilates for pregnant women” or “airport taxi” for a hotel.</span>
+                    <span class="lang es">Ejemplo: “pilates para embarazadas” o “taxi desde el aeropuerto” en el caso de un hotel.</span>
+                    <span class="lang en hidden">Example: “pilates for pregnant women” or “airport taxi” for a hotel.</span>
                 </span>
             </div>
             <div class="card">
@@ -285,17 +274,17 @@
                 <div class="time-block">
                     <h4><span class="lang es">Semanas 1 - 2</span><span class="lang en hidden">Weeks 1 - 2</span></h4>
                     <span class="promo-subheader"><span class="lang es">Fase de Datos</span><span class="lang en hidden">Data Phase</span></span>
-                    <p><span class="lang es">Extracción de keywords y análisis de volumen, intención de búsqueda y trends/estacionalidad.</span><span class="lang en hidden">Extraction of keywords and analysis of volume, search intent, and trends/seasonality.</span></p>
+                    <p><span class="lang es">Extracción de keywords y análisis de volumen, intención de búsqueda y trends.</span><span class="lang en hidden">Keyword extraction and analysis of volume, search intent, and trends.</span></p>
                 </div>
                 <div class="time-block">
                     <h4><span class="lang es">Semana 3</span><span class="lang en hidden">Week 3</span></h4>
                     <span class="promo-subheader"><span class="lang es">Fase de Competencia</span><span class="lang en hidden">Competitor Phase</span></span>
-                    <p><span class="lang es">Análisis de la competencia, sus perfiles de backlinks, sus webs y las palabras clave que atacan.</span><span class="lang en hidden">Competitor analysis, their backlink profiles, websites, and targeted keywords.</span></p>
+                    <p><span class="lang es">Análisis de la competencia, sus perfiles de backlinks y las palabras clave que atacan.</span><span class="lang en hidden">Competitor analysis, their backlink profiles, and targeted keywords.</span></p>
                 </div>
                 <div class="time-block">
                     <h4><span class="lang es">Semana 4</span><span class="lang en hidden">Week 4</span></h4>
                     <span class="promo-subheader"><span class="lang es">Fase de Estrategia</span><span class="lang en hidden">Strategy Phase</span></span>
-                    <p><span class="lang es">Juntar todos los datos, sacar Insights y redactar recomendaciones estratégicas para Inteligencia Turística.</span><span class="lang en hidden">Consolidate all data, extract Insights, and draft strategic recommendations for Inteligencia Turística.</span></p>
+                    <p><span class="lang es">Juntar todos los datos, sacar Insights y redactar recomendaciones estratégicas.</span><span class="lang en hidden">Consolidate all data, extract Insights, and draft strategic recommendations.</span></p>
                 </div>
             </div>
         </div>
@@ -304,10 +293,10 @@
             <div class="entregables-col">
                 <h3><span class="lang es">Entregables</span><span class="lang en hidden">Deliverables</span></h3>
                 <ul class="custom-list">
-                    <li><span class="lang es"><strong>Excels de Datos:</strong> Extracción de keywords, volúmenes, intención de búsqueda y mapeo estacional.</span><span class="lang en hidden"><strong>Data Excels:</strong> Keyword extraction, volumes, search intent, and seasonality mapping.</span></li>
-                    <li><span class="lang es"><strong>Análisis de Competencia:</strong> Auditoría de estrategias, keywords atacadas y perfil de backlinks.</span><span class="lang en hidden"><strong>Competitor Analysis:</strong> Audit of strategies, targeted keywords, and backlink profiles.</span></li>
+                    <li><span class="lang es"><strong>Excels de Datos:</strong> Keywords, volúmenes e intención de búsqueda.</span><span class="lang en hidden"><strong>Data Excels:</strong> Keywords, volumes, and search intent.</span></li>
+                    <li><span class="lang es"><strong>Auditoría Competencia:</strong> Auditoría de estrategias y perfil de backlinks.</span><span class="lang en hidden"><strong>Competitor Audit:</strong> Audit of strategies and backlink profiles.</span></li>
                     <li><span class="lang es"><strong>Auditoría Técnica:</strong> Arquitectura Web recomendada y mapeo de URLs.</span><span class="lang en hidden"><strong>Technical Audit:</strong> Recommended Web Architecture and URL mapping.</span></li>
-                    <li><span class="lang es"><strong>Documento Estratégico (PDF):</strong> Consolidación de datos y recomendaciones clave para Inteligencia Turística.</span><span class="lang en hidden"><strong>Strategic Document (PDF):</strong> Data consolidation and key recommendations for Inteligencia Turística.</span></li>
+                    <li><span class="lang es"><strong>PDF Estratégico:</strong> Consolidación de datos y recomendaciones clave.</span><span class="lang en hidden"><strong>Strategic PDF:</strong> Data consolidation and key recommendations.</span></li>
                 </ul>
             </div>
             <div class="budget-card">
@@ -317,50 +306,46 @@
                     <div class="price-row"><span><span class="lang es">IVA (21%)</span><span class="lang en hidden">VAT (21%)</span></span><span>126,00€</span></div>
                     <div class="price-row total"><span>Total</span><span>726,00€</span></div>
                 </div>
+                <div class="payment-plan">
+                    <span class="lang es"><strong>Forma de pago:</strong> Pago único (50% como activación al inicio / 50% a la entrega del documento estratégico).</span>
+                    <span class="lang en hidden"><strong>Payment plan:</strong> Single payment (50% on activation / 50% on delivery of strategic document).</span>
+                </div>
             </div>
         </div>
 
         <div class="recommendations-block">
-            <h2>
-                <span class="lang es">Recomendaciones tras el Estudio SEO</span>
-                <span class="lang en hidden">Recommendations after the SEO Study</span>
-            </h2>
-            <p>
-                <span class="lang es">Los datos nos indicarán si, antes de activar el SEM, necesitamos crear secciones, añadir FAQs, ajustar la propuesta o rediseñar landing pages.</span>
-                <span class="lang en hidden">The data will tell us if, before activating SEM, we need to create sections, add FAQs, adjust the proposal, or redesign landing pages.</span>
-            </p>
+            <h2><span class="lang es">Recomendaciones tras el Estudio SEO</span><span class="lang en hidden">Recommendations after the SEO Study</span></h2>
+            <p><span class="lang es">Los datos nos indicarán si, antes de activar el SEM, necesitamos crear secciones, añadir FAQs, ajustar la propuesta o rediseñar landing pages.</span><span class="lang en hidden">The data will tell us if, before activating SEM, we need to create sections, add FAQs, adjust the proposal, or redesign landing pages.</span></p>
         </div>
     </section>
 
     <section id="sem">
         <div class="section-header">
             <h2><span class="lang es">Analítica y Captación SEM</span><span class="lang en hidden">Analytics & SEM</span></h2>
-            <p><span class="lang es">Configuramos el ecosistema para que cada euro invertido sea rastreable y genere impacto directo en ventas/contactos.</span><span class="lang en hidden">We configure the ecosystem so every invested euro is trackable and generates direct impact on sales/contacts.</span></p>
+            <p><span class="lang es">Configuramos el ecosistema para que cada euro invertido sea rastreable y genere impacto directo.</span><span class="lang en hidden">We configure the ecosystem so every invested euro is trackable and generates direct impact.</span></p>
         </div>
 
         <div class="grid-container">
             <div class="card">
                 <h3><span class="lang es">1. Promo 400€ + 400€</span><span class="lang en hidden">1. Promo €400 + €400</span></h3>
-                <p><span class="lang es">Ventajas <a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a>: invirtiendo 400€ en 60 días, Google nos regala otros 400€ de crédito para gastar en otros 60 días.</span><span class="lang en hidden"><a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a> benefits: investing €400 in 60 days, Google gifts us another €400 in ad credit to spend in another 60 days.</span></p>
+                <p><span class="lang es">Ventajas <a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a>: invirtiendo 400€ en 60 días, Google nos regala otros 400€ de crédito para gastar en otros 60 días.</span><span class="lang en hidden"><a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a> benefits: investing €400 in 60 days, Google gifts €400 in credit to spend in another 60 days.</span></p>
             </div>
             <div class="card">
                 <h3><span class="lang es">2. Setup Analítica de Ads</span><span class="lang en hidden">2. Ads Analytics Setup</span></h3>
-                <p><span class="lang es">Vinculamos Google Ads a la web y configuramos el funnel de conversión aprovechando GA4 y Hotjar ya conectados a la web. Medimos cada euro invertido: desde clics hasta ventas finales.</span><span class="lang en hidden">We connect Google Ads to the website and set up the conversion funnel leveraging GA4 and Hotjar already connected to the website. We measure every euro: from clicks to final sales.</span></p>
+                <p><span class="lang es">Vinculamos Google Ads a la web y configuramos el funnel aprovechando GA4 y Hotjar ya conectados. Medimos cada euro invertido: desde clics hasta ventas finales.</span><span class="lang en hidden">We connect Google Ads to the web and set up the funnel leveraging existing GA4 and Hotjar. We measure every euro: from clicks to final sales.</span></p>
             </div>
             <div class="card">
                 <h3><span class="lang es">3. Lanzamiento SEM</span><span class="lang en hidden">3. SEM Launch</span></h3>
-                <p><span class="lang es">Campañas Ads basadas en keywords transaccionales orientadas a conversión. Elegimos exactamente cómo aparecer (con anuncios curados) ante las búsquedas específicas de nuestro target.</span><span class="lang en hidden">Ads campaigns based on transactional keywords focused on conversion. We choose exactly how to appear (with curated ads) for the specific searches of our target.</span></p>
+                <p><span class="lang es">Campañas Ads basadas en keywords transaccionales orientadas a conversión. Elegimos exactamente cómo aparecer ante las búsquedas específicas de nuestro target.</span><span class="lang en hidden">Ads campaigns based on transactional keywords focused on conversion. We choose exactly how to appear for specific target searches.</span></p>
             </div>
         </div>
 
         <div class="timeline-wrapper">
             <h3><span class="lang es">Cronograma SEM (4 Meses)</span><span class="lang en hidden">SEM Timeline (4 Months)</span></h3>
-            
             <div class="timeline-disclaimer">
-                <span class="lang es">Nota: El tiempo es una estimación. El ritmo de inversión, la activación de la promoción de Google (sujeta a sus plazos) y las reuniones esporádicas con agentes oficiales de Google Ads pueden extender la duración real a 5 o 6 meses. Sin embargo, el coste de nuestros honorarios está estrictamente cerrado a 4 meses.</span>
-                <span class="lang en hidden">Note: Time is an estimate. Spend rate, Google promo activation (subject to their timelines), and sporadic meetings with official Google Ads reps can extend the actual duration to 5 or 6 months. However, our service fees are strictly capped at 4 months.</span>
+                <span class="lang es">Nota: El tiempo es una estimación. Factores externos de Google pueden extender la duración real a 5-6 meses, pero los honorarios se mantienen cerrados a los 4 meses presupuestados.</span>
+                <span class="lang en hidden">Note: Time is an estimate. External Google factors may extend duration to 5-6 months, but fees are strictly capped at the 4 months budgeted.</span>
             </div>
-
             <div class="timeline-flex">
                 <div class="time-block">
                     <h4><span class="lang es">Semana 1</span><span class="lang en hidden">Week 1</span></h4>
@@ -369,24 +354,23 @@
                 </div>
                 <div class="time-block">
                     <h4><span class="lang es">Semanas 2 - 9</span><span class="lang en hidden">Weeks 2 - 9</span></h4>
-                    <span class="promo-subheader"><span class="lang es">Días 1 - 60 de Google Promo</span><span class="lang en hidden">Days 1 - 60 of Google Promo</span></span>
-                    <p><span class="lang es">Fase Inicial (400€) para cumplir los requisitos de la promo.</span><span class="lang en hidden">Initial Phase (€400) to meet the promo requirements.</span></p>
+                    <span class="promo-subheader"><span class="lang es">Días 1 - 60 Google Promo</span><span class="lang en hidden">Days 1 - 60 Google Promo</span></span>
+                    <p><span class="lang es">Fase Inicial (400€) para cumplir los requisitos de la promo.</span><span class="lang en hidden">Initial Phase (€400) to meet promo requirements.</span></p>
                 </div>
                 <div class="time-block pause-block">
                     <h4><span class="lang es">Semanas 10 - 11</span><span class="lang en hidden">Weeks 10 - 11</span></h4>
-                    <span class="promo-subheader"><span class="lang es">Pausa Técnica de Google Promo</span><span class="lang en hidden">Technical Pause of Google Promo</span></span>
+                    <span class="promo-subheader"><span class="lang es">Pausa Técnica</span><span class="lang en hidden">Technical Pause</span></span>
                     <p><span class="lang es">Validación de crédito de Google (1-2 semanas).</span><span class="lang en hidden">Google credit validation (1-2 weeks).</span></p>
                 </div>
                 <div class="time-block">
                     <h4><span class="lang es">Semanas 12 - 19</span><span class="lang en hidden">Weeks 12 - 19</span></h4>
-                    <span class="promo-subheader"><span class="lang es">Días 61 - 120 de Google Promo</span><span class="lang en hidden">Days 61 - 120 of Google Promo</span></span>
+                    <span class="promo-subheader"><span class="lang es">Días 61 - 120 Google Promo</span><span class="lang en hidden">Days 61 - 120 Google Promo</span></span>
                     <p><span class="lang es">Fase Crédito (400€ regalados maximizando visibilidad).</span><span class="lang en hidden">Credit Phase (€400 gift maximizing visibility).</span></p>
                 </div>
             </div>
-            
             <div class="tracking-bar sem-bar">
-                <span class="lang es">Tracking, Optimización y Tests A/B activos durante los 4 meses de la campaña, con reportes mensuales y llamadas de seguimiento semanales o quincenales según necesidades del proyecto.</span>
-                <span class="lang en hidden">Tracking, Optimization, and A/B Tests active during the 4 months of the campaign, with monthly reports and weekly or bi-weekly follow-up calls as needed by the project.</span>
+                <span class="lang es">Tracking y A/B Testing activos durante los 4 meses, con reportes mensuales y llamadas semanales/quincenales.</span>
+                <span class="lang en hidden">Tracking and A/B Testing active for 4 months, with monthly reports and weekly/bi-weekly calls.</span>
             </div>
         </div>
 
@@ -394,10 +378,9 @@
             <div class="entregables-col">
                 <h3><span class="lang es">Entregables</span><span class="lang en hidden">Deliverables</span></h3>
                 <ul class="custom-list">
-                    <li><span class="lang es"><strong>Setup Analítico Integrado:</strong> Configuración final de GA4, GTM y Funnel de Conversión de Ads.</span><span class="lang en hidden"><strong>Integrated Analytics Setup:</strong> Final configuration of GA4, GTM, and Ads Conversion Funnel.</span></li>
-                    <li><span class="lang es"><strong>Estructura de Campaña:</strong> Documento base con segmentación de audiencias, estrategia de pujas y Copies (Anuncios).</span><span class="lang en hidden"><strong>Campaign Structure:</strong> Base document with audience segmentation, bidding strategy, and Ad Copies.</span></li>
-                    <li><span class="lang es"><strong>Bitácora de Optimización:</strong> Registro continuo de cambios y A/B testing en pujas, keywords y presupuesto.</span><span class="lang en hidden"><strong>Optimization Log:</strong> Continuous tracking of A/B testing and changes in bids, keywords, and budget.</span></li>
-                    <li><span class="lang es"><strong>Reporting Integral:</strong> Informes mensuales de rendimiento (CPC, clics, conversiones) y gestión de la Promo de Google.</span><span class="lang en hidden"><strong>Comprehensive Reporting:</strong> Monthly performance reports (CPC, clicks, conversions) and Google Promo management.</span></li>
+                    <li><span class="lang es"><strong>Setup Analítico:</strong> Configuración final de GA4, GTM y Funnel de Ads.</span><span class="lang en hidden"><strong>Integrated Analytics:</strong> Final setup of GA4, GTM, and Ads Funnel.</span></li>
+                    <li><span class="lang es"><strong>Estructura Campaña:</strong> Segmentación, estrategia de pujas y Ad Copies.</span><span class="lang en hidden"><strong>Campaign Structure:</strong> Segmentation, bidding strategy, and Ad Copies.</span></li>
+                    <li><span class="lang es"><strong>Reporting:</strong> Informes mensuales de rendimiento (CPC, clics, conversiones).</span><span class="lang en hidden"><strong>Reporting:</strong> Monthly performance reports (CPC, clicks, conversions).</span></li>
                 </ul>
             </div>
             <div class="budget-card">
@@ -407,18 +390,17 @@
                     <div class="price-row"><span><span class="lang es">IVA (21%)</span><span class="lang en hidden">VAT (21%)</span></span><span>105,00€ / <span class="lang es">mes</span><span class="lang en hidden">mo</span></span></div>
                     <div class="price-row total"><span>Total</span><span>605,00€ / <span class="lang es">mes</span><span class="lang en hidden">mo</span></span></div>
                 </div>
-                <p style="text-align: right; font-size: 0.85rem; color: var(--text-gray); margin-top: 10px;">
-                    *<span class="lang es">Durante 4 meses cerrados</span><span class="lang en hidden">For 4 capped months</span>
-                </p>
+                <div class="payment-plan">
+                    <span class="lang es"><strong>Forma de pago:</strong> Mensualidad vencida (última semana de cada mes).</span>
+                    <span class="lang en hidden"><strong>Payment plan:</strong> Monthly in arrears (last week of each month).</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="disclaimers" class="bg-gray" style="padding-top: 60px;">
-        
+    <section id="disclaimers" class="bg-gray">
         <div class="section-header">
             <h2><span class="lang es">Cronograma Global y Legal</span><span class="lang en hidden">Global Timeline & Legal</span></h2>
-            <p><span class="lang es">Visualización del desarrollo en paralelo y consideraciones finales para la ejecución del proyecto.</span><span class="lang en hidden">Visualization of parallel development and final considerations for project execution.</span></p>
         </div>
 
         <div class="global-timeline-container">
@@ -428,10 +410,9 @@
                     <span class="duration"><span class="lang es">7 Semanas</span><span class="lang en hidden">7 Weeks</span></span>
                 </div>
                 <div class="gt-bar-bg">
-                    <div class="gt-bar bot" style="width: 35%;"><span class="lang es">Semanas 1 - 7</span><span class="lang en hidden">Weeks 1 - 7</span></div>
+                    <div class="gt-bar bot"><span class="lang es">Desarrollo e IA</span><span class="lang en hidden">Dev & AI</span></div>
                 </div>
             </div>
-            
             <div class="gt-track">
                 <div class="gt-label">
                     <span class="lang es">Marketing (SEO & SEM)</span><span class="lang en hidden">Marketing (SEO & SEM)</span>
@@ -442,54 +423,38 @@
                     <div class="gt-bar sem"><span class="lang es">SEM (Meses 2 - 5)</span><span class="lang en hidden">SEM (Months 2 - 5)</span></div>
                 </div>
             </div>
-            <div class="gt-markers">
-                <span>Mes 1</span>
-                <span>Mes 2</span>
-                <span>Mes 3</span>
-                <span>Mes 4</span>
-                <span>Mes 5</span>
-            </div>
+            <div class="gt-markers"><span>Mes 1</span><span>Mes 2</span><span>Mes 3</span><span>Mes 4</span><span>Mes 5</span></div>
         </div>
 
         <div class="info-box">
-            <ul class="custom-list" style="margin-top: 10px;">
+            <ul class="custom-list">
                 <li>
-                    <strong style="color: var(--text-dark);"><span class="lang es">Costes Recurrentes y de Terceros:</span><span class="lang en hidden">Recurring & Third-Party Costs:</span></strong> 
-                    <span class="lang es">Esta propuesta incluye exclusivamente nuestros honorarios de servicio técnico y estratégico. No incluye los costes de plataformas de terceros (ej. servidores, base de datos vectorial, consumo de APIs de IA para el ChatBot, o inversión directa publicitaria en Google Ads más allá del crédito de las promociones). Estos gastos correrán a cargo del cliente en sus propias cuentas.</span>
-                    <span class="lang en hidden">This proposal exclusively covers our technical and strategic service fees. It does not include third-party platform costs (e.g., servers, vector database, AI API consumption for the ChatBot, or direct advertising spend in Google Ads beyond the promos). These expenses will be borne by the client in their own accounts.</span>
+                    <strong style="color: var(--text-dark);"><span class="lang es">Costes Recurrentes:</span><span class="lang en hidden">Recurring Costs:</span></strong> 
+                    <span class="lang es">No se incluyen costes de terceros (servidores, APIs de IA, o inversión directa en Google Ads). Estos gastos correrán a cargo del cliente en sus propias cuentas.</span>
+                    <span class="lang en hidden">Third-party costs (servers, AI APIs, or direct Google Ads spend) are not included. These will be borne by the client in their own accounts.</span>
                 </li>
-                <li style="margin-top: 20px;">
-                    <strong style="color: var(--text-dark);"><span class="lang es">Ajustes y Feedback (ChatBot):</span><span class="lang en hidden">Adjustments & Feedback (ChatBot):</span></strong> 
-                    <span class="lang es">El desarrollo centraliza todo el proceso de ajuste de comportamiento, tono y directrices (Prompting) de la IA exclusivamente durante la <strong>Semana 6</strong> del cronograma. Para garantizar los plazos técnicos, cualquier necesidad de iteraciones o bucles de feedback adicionales fuera de esta fase se gestionará mediante bolsas de horas o anexos al contrato.</span>
-                    <span class="lang en hidden">Development centralizes the adjustment of AI behavior, tone, and guidelines (Prompting) exclusively during <strong>Week 6</strong> of the timeline. To guarantee technical deadlines, any additional iterations or feedback loops outside this phase will be managed via hourly packages or contract addendums.</span>
+                <li>
+                    <strong style="color: var(--text-dark);"><span class="lang es">Ajustes y Feedback (ChatBot):</span><span class="lang en hidden">Feedback (ChatBot):</span></strong> 
+                    <span class="lang es">El ajuste de comportamiento y tono (Prompting) se centraliza exclusivamente durante la <strong>Semana 6</strong>. Iteraciones adicionales se gestionarán vía bolsa de horas.</span>
+                    <span class="lang en hidden">Tone and behavior adjustments (Prompting) are centralized exclusively during <strong>Week 6</strong>. Extra iterations via hourly packages.</span>
                 </li>
-                <li style="margin-top: 20px;">
-                    <strong style="color: var(--text-dark);"><span class="lang es">Incertidumbre Técnica y Límites de la IA:</span><span class="lang en hidden">Technical Uncertainty & AI Limits:</span></strong> 
-                    <span class="lang es">El cliente reconoce la naturaleza experimental e imprevisible de la Inteligencia Artificial generativa. A pesar de utilizar arquitectura RAG para ceñir las respuestas a los datos de la web, existe un margen de incertidumbre técnica inherente, incluyendo posibles "alucinaciones" del modelo o desvíos de contexto. Se requerirá flexibilidad por parte del cliente para adaptar los resultados mediante <em>prompting</em>, asumiendo que no se admitirán bucles de revisión infinitos persiguiendo una precisión humana microscópica sin incurrir en presupuestos adicionales.</span>
-                    <span class="lang en hidden">The client acknowledges the experimental and unpredictable nature of generative Artificial Intelligence. Despite using RAG architecture to constrain responses to website data, there is an inherent margin of technical uncertainty, including possible model "hallucinations" or context deviations. Client flexibility will be required to adapt results via <em>prompting</em>, assuming infinite revision loops pursuing microscopic human precision will not be admitted without incurring additional budgets.</span>
+                <li>
+                    <strong style="color: var(--text-dark);"><span class="lang es">Incertidumbre de la IA:</span><span class="lang en hidden">AI Uncertainty:</span></strong> 
+                    <span class="lang es">Se reconoce la naturaleza imprevisible de la IA. Existe un margen de incertidumbre técnica ("alucinaciones"). Se requiere flexibilidad para adaptar resultados mediante prompting sin admitir bucles infinitos.</span>
+                    <span class="lang en hidden">The unpredictable nature of AI is acknowledged. Technical uncertainty ("hallucinations") exists. Flexibility is required for results via prompting without infinite loops.</span>
                 </li>
-                <li style="margin-top: 20px;">
-                    <strong style="color: var(--text-dark);"><span class="lang es">Privacidad y Legalidad:</span><span class="lang en hidden">Privacy & Compliance:</span></strong> 
-                    <span class="lang es">La implementación del ChatBot implica sistemas de captura de datos de usuario. Será responsabilidad del cliente (junto a su equipo legal) actualizar obligatoriamente la <strong>Política de Privacidad</strong> y el <strong>Aviso de Cookies</strong> de la web para cumplir con la normativa RGPD vigente.</span>
-                    <span class="lang en hidden">Implementing the ChatBot involves user data capture systems. It will be the client's responsibility (alongside their legal team) to mandatorily update the website's <strong>Privacy Policy</strong> and <strong>Cookie Notice</strong> to comply with current GDPR regulations.</span>
-                </li>
-                <li style="margin-top: 20px;">
-                    <strong style="color: var(--text-dark);"><span class="lang es">Contrato y Pagos:</span><span class="lang en hidden">Contract & Payments:</span></strong> 
-                    <span class="lang es">Una vez validada y aceptada esta propuesta, se redactará un contrato formal de servicios que detallará los hitos exactos de entrega, accesos requeridos y establecerá un calendario de pagos a medida.</span>
-                    <span class="lang en hidden">Once this proposal is validated and accepted, a formal service contract will be drafted detailing exact delivery milestones, required accesses, and establishing a tailored payment schedule.</span>
+                <li>
+                    <strong style="color: var(--text-dark);"><span class="lang es">Privacidad:</span><span class="lang en hidden">Privacy:</span></strong> 
+                    <span class="lang es">El cliente debe actualizar obligatoriamente la Política de Privacidad y Cookies para cumplir con el RGPD por la captación de datos del bot.</span>
+                    <span class="lang en hidden">The client must update the Privacy and Cookie Policy to comply with GDPR for bot data capture.</span>
                 </li>
             </ul>
         </div>
     </section>
 
     <footer>
-        <p>
-            <span class="lang es">&copy; 2026 <a href="https://loopdev.es/" target="_blank" class="classic-link">Loop Development</a>. Propuesta preparada para Inteligencia Turística.</span>
-            <span class="lang en hidden">&copy; 2026 <a href="https://loopdev.es/" target="_blank" class="classic-link">Loop Development</a>. Proposal prepared for Inteligencia Turística.</span>
-        </p>
-        <div class="footer-contact">
-            santiago@loopdev.es - (+34) 620 863 923
-        </div>
+        <p><span class="lang es">&copy; 2026 <a href="https://loopdev.es/" target="_blank" class="classic-link">Loop Development</a>. Propuesta para Inteligencia Turística.</span><span class="lang en hidden">&copy; 2026 <a href="https://loopdev.es/" target="_blank" class="classic-link">Loop Development</a>. Proposal for Inteligencia Turística.</span></p>
+        <div class="footer-contact">santiago@loopdev.es - (+34) 620 863 923</div>
     </footer>
 
     <script>
@@ -497,7 +462,6 @@
             document.getElementById('btn-es').classList.remove('active');
             document.getElementById('btn-en').classList.remove('active');
             document.getElementById('btn-' + lang).classList.add('active');
-            
             document.querySelectorAll('.lang').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.lang.' + lang).forEach(el => el.classList.remove('hidden'));
         }
