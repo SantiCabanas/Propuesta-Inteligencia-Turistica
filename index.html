@@ -29,11 +29,9 @@
         header { display: flex; justify-content: space-between; align-items: center; padding: 24px 5%; background: var(--bg-white); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
         .logo-text { font-family: 'Poppins', sans-serif; font-size: 1.2rem; color: var(--text-dark); }
         .header-right { display: flex; align-items: center; gap: 30px; }
-        
         nav ul { list-style: none; display: flex; gap: 25px; }
         nav ul li a { color: var(--text-gray); font-size: 0.95rem; font-weight: 500; }
         nav ul li a:hover, .card a:not(.classic-link) { color: var(--pink); }
-
         .lang-switch { display: flex; gap: 10px; font-size: 0.85rem; background: var(--bg-gray); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); }
         .lang-switch button { background: none; border: none; cursor: pointer; color: var(--text-gray); font-weight: 600; font-family: 'Inter', sans-serif; }
         .lang-switch button.active { color: var(--pink); }
@@ -69,7 +67,6 @@
         ul.custom-list li { position: relative; padding-left: 25px; margin-bottom: 15px; color: var(--text-gray); font-size: 0.95rem; }
         ul.custom-list li::before { content: '✓'; position: absolute; left: 0; color: var(--pink); font-weight: bold; }
 
-        /* Budget Card & Price Breakdown */
         .budget-card { background: var(--bg-gray); border: 1px solid var(--border); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
         .budget-card > h3 { font-size: 1.5rem; margin-bottom: 25px; font-weight: 600; text-align: center; }
         .price-breakdown { padding-top: 20px; border-top: 1px solid var(--border); width: 100%; }
@@ -78,7 +75,6 @@
         .payment-plan { margin-top: 20px; font-size: 0.85rem; color: var(--text-gray); border-top: 1px dashed var(--border); padding-top: 15px; }
         .payment-plan strong { color: var(--text-dark); }
 
-        /* Timelines */
         .timeline-wrapper { margin-top: 60px; background: var(--bg-white); padding: 40px; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
         .timeline-wrapper h3 { margin-bottom: 10px; font-size: 1.4rem; color: var(--text-dark); }
         .timeline-disclaimer { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 30px; padding-left: 15px; border-left: 3px solid var(--pink); font-style: italic; line-height: 1.5; }
@@ -105,10 +101,13 @@
         .gt-bar.sem { background: #A30043; width: 80%; left: 20%; z-index: 1; border-radius: 0 8px 8px 0; }
         .gt-markers { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.8rem; color: var(--text-gray); padding: 0 5px; }
 
-        /* Recommendations Block */
+        /* Recommendations & Optional Section */
         .recommendations-block { background: var(--pink); text-align: center; padding: 80px 10%; margin: 60px 0 0 0; border-radius: 16px; box-shadow: 0 10px 40px rgba(231, 0, 94, 0.1); }
         .recommendations-block h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 25px; color: white; letter-spacing: -0.5px; }
         .recommendations-block p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; color: white; line-height: 1.8; font-weight: 500; }
+
+        .optional-section { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); }
+        .optional-section h3 { font-size: 1.6rem; color: var(--text-dark); margin-bottom: 30px; font-weight: 600; }
 
         /* Legal Info Boxes */
         .info-box { background: var(--bg-white); border: 1px solid var(--border); border-left: 4px solid var(--text-dark); padding: 30px; border-radius: 8px; margin-top: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
@@ -177,7 +176,7 @@
         <div class="grid-container">
             <div class="card">
                 <h3><span class="lang es">Alcance del Proyecto</span><span class="lang en hidden">Project Scope</span></h3>
-                <p><span class="lang es">El chatbot indexará toda la información de la web: marketplace, escuela IT, casos de éxito y actualidad. Responderá de forma precisa basándose únicamente en vuestros datos, sin inventar información externa.</span><span class="lang en hidden">The chatbot will index all website info: marketplace, IT school, success stories, and news. It will answer precisely based solely on your data, without hallucinating external info.</span></p>
+                <p><span class="lang es">El chatbot indexará toda la información de la web: marketplace, escuela IT, casos de éxito y actualidad. Responderá de forma precisa basándose únicamente en vuestros datos.</span><span class="lang en hidden">The chatbot will index all website info: marketplace, IT school, success stories, and news. It will answer precisely based solely on your data.</span></p>
             </div>
             <div class="card">
                 <h3><span class="lang es">Arquitectura (RAG)</span><span class="lang en hidden">Architecture (RAG)</span></h3>
@@ -186,8 +185,8 @@
             <div class="card">
                 <h3><span class="lang es">Flujo de Información</span><span class="lang en hidden">Information Flow</span></h3>
                 <p>
-                    <span class="lang es">Actúa como filtro inteligente identificando intención y capturando datos (nombre, email, empresa). La info se canaliza vía email al equipo comercial y se registra en una base de datos propia (Supabase/Postgres) lista para CRM.</span>
-                    <span class="lang en hidden">Acts as a smart filter identifying intent and capturing data (name, email, company). Info is channeled via email to sales and logged in a dedicated database (Supabase/Postgres) ready for CRM.</span>
+                    <span class="lang es">El ChatBot actúa como asistente recomendando servicios según la consulta del usuario. Al finalizar, redirige al formulario de contacto oficial para cerrar la captación. En esta fase inicial, mediremos el volumen de conversaciones y la tasa de clics hacia el formulario.</span>
+                    <span class="lang en hidden">The ChatBot acts as an assistant recommending services based on user queries. At the end, it redirects to the official contact form to close the lead. In this initial phase, we will measure conversation volume and form click-through rate.</span>
                 </p>
             </div>
         </div>
@@ -208,7 +207,7 @@
                 <div class="time-block">
                     <h4><span class="lang es">Semana 6</span><span class="lang en hidden">Week 6</span></h4>
                     <span class="promo-subheader"><span class="lang es">Ajuste Fino y Feedback</span><span class="lang en hidden">Fine-Tuning & Feedback</span></span>
-                    <p><span class="lang es">Fine tuning, ajuste de directrices (Prompting) y feedback sobre la forma de hablar y tono.</span><span class="lang en hidden">Fine tuning, prompting adjustments, and feedback on the bot's tone and way of speaking.</span></p>
+                    <p><span class="lang es">Fine tuning, ajuste de directrices (Prompting) y feedback sobre la forma de hablar y tono del bot.</span><span class="lang en hidden">Fine tuning, prompting adjustments, and feedback on the bot's tone and way of speaking.</span></p>
                 </div>
                 <div class="time-block">
                     <h4><span class="lang es">Semana 7</span><span class="lang en hidden">Week 7</span></h4>
@@ -222,9 +221,9 @@
             <div class="entregables-col">
                 <h3><span class="lang es">Entregables</span><span class="lang en hidden">Deliverables</span></h3>
                 <ul class="custom-list">
-                    <li><span class="lang es"><strong>Software Propio:</strong> Código fuente completo y propiedad intelectual.</span><span class="lang en hidden"><strong>Proprietary Software:</strong> Complete source code and intellectual property.</span></li>
+                    <li><span class="lang es"><strong>Software Propio:</strong> Código fuente completo y propiedad intelectual del sistema desarrollado.</span><span class="lang en hidden"><strong>Proprietary Software:</strong> Complete source code and intellectual property.</span></li>
                     <li><span class="lang es"><strong>Integración WP:</strong> Plugin configurado y Widget de chat funcional.</span><span class="lang en hidden"><strong>WP Integration:</strong> Configured plugin and functional chat Widget.</span></li>
-                    <li><span class="lang es"><strong>Motor RAG:</strong> Base de datos vectorial con los contenidos de la web.</span><span class="lang en hidden"><strong>RAG Engine:</strong> Vector database populated with website content.</span></li>
+                    <li><span class="lang es"><strong>Motor RAG:</strong> Base de datos vectorial poblada con los contenidos de la web.</span><span class="lang en hidden"><strong>RAG Engine:</strong> Vector database populated with website content.</span></li>
                     <li><span class="lang es"><strong>Documentación:</strong> Manual técnico de arquitectura y manual de usuario.</span><span class="lang en hidden"><strong>Documentation:</strong> Technical architecture manual and user manual.</span></li>
                 </ul>
             </div>
@@ -237,7 +236,29 @@
                 </div>
                 <div class="payment-plan">
                     <span class="lang es"><strong>Forma de pago:</strong> Plan por hitos técnicos. Activación inicial al firmar, pagos parciales por hitos y cierre tras puesta en producción.</span>
-                    <span class="lang en hidden"><strong>Payment plan:</strong> Technical milestone plan. Initial activation on signing, partial milestone payments, and final closing after production.</span>
+                    <span class="lang en hidden"><strong>Payment plan:</strong> Technical milestone plan. Initial activation on signing, partial payments, and final closing.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="optional-section">
+            <h3><span class="lang es">Funcionalidades Opcionales Futuras (Add-ons)</span><span class="lang en hidden">Future Optional Features (Add-ons)</span></h3>
+            <div class="grid-container">
+                <div class="card" style="background: white; border: 1px solid var(--border);">
+                    <h3><span class="lang es">Lead Capture Integrado</span><span class="lang en hidden">Integrated Lead Capture</span></h3>
+                    <p><span class="lang es">Captura de datos directamente dentro del chat sin redirigir a formularios externos, con volcado automático a CRM vía API.</span><span class="lang en hidden">Direct data capture within the chat without redirects, with automatic sync to CRM via API.</span></p>
+                </div>
+                <div class="card" style="background: white; border: 1px solid var(--border);">
+                    <h3><span class="lang es">Dashboard de Analítica</span><span class="lang en hidden">Analytics Dashboard</span></h3>
+                    <p><span class="lang es">Panel visual para monitorizar preguntas más frecuentes, temas populares y análisis de satisfacción del usuario en tiempo real.</span><span class="lang en hidden">Visual dashboard to monitor FAQs, popular topics, and real-time user satisfaction analysis.</span></p>
+                </div>
+                <div class="card" style="background: white; border: 1px solid var(--border);">
+                    <h3><span class="lang es">Interfaz de Voz</span><span class="lang en hidden">Voice Interface</span></h3>
+                    <p><span class="lang es">Botón de micrófono para que el usuario realice consultas por voz (Web Speech API) y reciba respuestas habladas.</span><span class="lang en hidden">Microphone button for voice queries (Web Speech API) with spoken responses.</span></p>
+                </div>
+                <div class="card" style="background: white; border: 1px solid var(--border);">
+                    <h3><span class="lang es">Soporte Multiidioma</span><span class="lang en hidden">Multi-language Support</span></h3>
+                    <p><span class="lang es">Detección automática del idioma del usuario y capacidad del bot para responder nativamente en Inglés, Francés o Alemán.</span><span class="lang en hidden">Automatic language detection and native bot responses in English, French, or German.</span></p>
                 </div>
             </div>
         </div>
@@ -308,14 +329,14 @@
                 </div>
                 <div class="payment-plan">
                     <span class="lang es"><strong>Forma de pago:</strong> Pago único (50% como activación al inicio / 50% a la entrega del documento estratégico).</span>
-                    <span class="lang en hidden"><strong>Payment plan:</strong> Single payment (50% on activation / 50% on delivery of strategic document).</span>
+                    <span class="lang en hidden"><strong>Payment plan:</strong> Single payment (50% on activation / 50% on strategic document delivery).</span>
                 </div>
             </div>
         </div>
 
         <div class="recommendations-block">
             <h2><span class="lang es">Recomendaciones tras el Estudio SEO</span><span class="lang en hidden">Recommendations after the SEO Study</span></h2>
-            <p><span class="lang es">Los datos nos indicarán si, antes de activar el SEM, necesitamos crear secciones, añadir FAQs, ajustar la propuesta o rediseñar landing pages.</span><span class="lang en hidden">The data will tell us if, before activating SEM, we need to create sections, add FAQs, adjust the proposal, or redesign landing pages.</span></p>
+            <p><span class="lang es">Los datos nos indicarán si, antes de activar el SEM, necesitamos crear secciones, añadir FAQs, ajustar la propuesta o rediseñar landing pages.</span><span class="lang en hidden">The data will tell us if we need to create sections, add FAQs, or redesign pages before SEM.</span></p>
         </div>
     </section>
 
@@ -328,15 +349,15 @@
         <div class="grid-container">
             <div class="card">
                 <h3><span class="lang es">1. Promo 400€ + 400€</span><span class="lang en hidden">1. Promo €400 + €400</span></h3>
-                <p><span class="lang es">Ventajas <a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a>: invirtiendo 400€ en 60 días, Google nos regala otros 400€ de crédito para gastar en otros 60 días.</span><span class="lang en hidden"><a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a> benefits: investing €400 in 60 days, Google gifts €400 in credit to spend in another 60 days.</span></p>
+                <p><span class="lang es">Ventajas <a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a>: invirtiendo 400€ en 60 días, Google nos regala otros 400€ de crédito para gastar en otros 60 días.</span><span class="lang en hidden"><a href="https://business.google.com/es/google-ads/" target="_blank" class="classic-link">Google Partner</a> benefits: investing €400 in 60 days, Google gifts €400 in credit.</span></p>
             </div>
             <div class="card">
                 <h3><span class="lang es">2. Setup Analítica de Ads</span><span class="lang en hidden">2. Ads Analytics Setup</span></h3>
-                <p><span class="lang es">Vinculamos Google Ads a la web y configuramos el funnel aprovechando GA4 y Hotjar ya conectados. Medimos cada euro invertido: desde clics hasta ventas finales.</span><span class="lang en hidden">We connect Google Ads to the web and set up the funnel leveraging existing GA4 and Hotjar. We measure every euro: from clicks to final sales.</span></p>
+                <p><span class="lang es">Vinculamos Google Ads a la web y configuramos el funnel aprovechando GA4 y Hotjar ya conectados. Medimos cada euro invertido: desde clics hasta ventas finales.</span><span class="lang en hidden">We connect Google Ads to the web and set up the funnel leveraging existing GA4 and Hotjar. We measure every euro.</span></p>
             </div>
             <div class="card">
                 <h3><span class="lang es">3. Lanzamiento SEM</span><span class="lang en hidden">3. SEM Launch</span></h3>
-                <p><span class="lang es">Campañas Ads basadas en keywords transaccionales orientadas a conversión. Elegimos exactamente cómo aparecer ante las búsquedas específicas de nuestro target.</span><span class="lang en hidden">Ads campaigns based on transactional keywords focused on conversion. We choose exactly how to appear for specific target searches.</span></p>
+                <p><span class="lang es">Campañas Ads basadas en keywords transaccionales orientadas a conversión. Elegimos exactamente cómo aparecer ante las búsquedas específicas de nuestro target.</span><span class="lang en hidden">Ads campaigns based on transactional keywords. We choose exactly how to appear for specific target searches.</span></p>
             </div>
         </div>
 
@@ -344,7 +365,7 @@
             <h3><span class="lang es">Cronograma SEM (4 Meses)</span><span class="lang en hidden">SEM Timeline (4 Months)</span></h3>
             <div class="timeline-disclaimer">
                 <span class="lang es">Nota: El tiempo es una estimación. Factores externos de Google pueden extender la duración real a 5-6 meses, pero los honorarios se mantienen cerrados a los 4 meses presupuestados.</span>
-                <span class="lang en hidden">Note: Time is an estimate. External Google factors may extend duration to 5-6 months, but fees are strictly capped at the 4 months budgeted.</span>
+                <span class="lang en hidden">Note: Time is an estimate. External Google factors may extend duration, but fees are strictly capped at 4 months.</span>
             </div>
             <div class="timeline-flex">
                 <div class="time-block">
@@ -431,22 +452,22 @@
                 <li>
                     <strong style="color: var(--text-dark);"><span class="lang es">Costes Recurrentes:</span><span class="lang en hidden">Recurring Costs:</span></strong> 
                     <span class="lang es">No se incluyen costes de terceros (servidores, APIs de IA, o inversión directa en Google Ads). Estos gastos correrán a cargo del cliente en sus propias cuentas.</span>
-                    <span class="lang en hidden">Third-party costs (servers, AI APIs, or direct Google Ads spend) are not included. These will be borne by the client in their own accounts.</span>
+                    <span class="lang en hidden">Third-party costs (servers, AI APIs, or ads spend) are not included. Borne by client.</span>
                 </li>
                 <li>
                     <strong style="color: var(--text-dark);"><span class="lang es">Ajustes y Feedback (ChatBot):</span><span class="lang en hidden">Feedback (ChatBot):</span></strong> 
                     <span class="lang es">El ajuste de comportamiento y tono (Prompting) se centraliza exclusivamente durante la <strong>Semana 6</strong>. Iteraciones adicionales se gestionarán vía bolsa de horas.</span>
-                    <span class="lang en hidden">Tone and behavior adjustments (Prompting) are centralized exclusively during <strong>Week 6</strong>. Extra iterations via hourly packages.</span>
+                    <span class="lang en hidden">Tone adjustments (Prompting) centralized in <strong>Week 6</strong>. Extra iterations via hourly packages.</span>
                 </li>
                 <li>
                     <strong style="color: var(--text-dark);"><span class="lang es">Incertidumbre de la IA:</span><span class="lang en hidden">AI Uncertainty:</span></strong> 
-                    <span class="lang es">Se reconoce la naturaleza imprevisible de la IA. Existe un margen de incertidumbre técnica ("alucinaciones"). Se requiere flexibilidad para adaptar resultados mediante prompting sin admitir bucles infinitos.</span>
-                    <span class="lang en hidden">The unpredictable nature of AI is acknowledged. Technical uncertainty ("hallucinations") exists. Flexibility is required for results via prompting without infinite loops.</span>
+                    <span class="lang es">Se reconoce la naturaleza imprevisible de la IA ("alucinaciones"). Se requiere flexibilidad para adaptar resultados mediante prompting sin admitir bucles infinitos.</span>
+                    <span class="lang en hidden">The unpredictable nature of AI ("hallucinations") is acknowledged. Results adapted via prompting.</span>
                 </li>
                 <li>
                     <strong style="color: var(--text-dark);"><span class="lang es">Privacidad:</span><span class="lang en hidden">Privacy:</span></strong> 
                     <span class="lang es">El cliente debe actualizar obligatoriamente la Política de Privacidad y Cookies para cumplir con el RGPD por la captación de datos del bot.</span>
-                    <span class="lang en hidden">The client must update the Privacy and Cookie Policy to comply with GDPR for bot data capture.</span>
+                    <span class="lang en hidden">Client must update Privacy Policy to comply with GDPR for bot data capture.</span>
                 </li>
             </ul>
         </div>
