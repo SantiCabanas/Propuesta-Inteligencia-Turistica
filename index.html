@@ -108,6 +108,7 @@
 
         .optional-section { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); }
         .optional-section h3 { font-size: 1.6rem; color: var(--text-dark); margin-bottom: 30px; font-weight: 600; }
+        .optional-card { background: white; border: 1px solid var(--border); border-left: 4px solid var(--pink); }
 
         /* Legal Info Boxes */
         .info-box { background: var(--bg-white); border: 1px solid var(--border); border-left: 4px solid var(--text-dark); padding: 30px; border-radius: 8px; margin-top: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
@@ -185,8 +186,8 @@
             <div class="card">
                 <h3><span class="lang es">Flujo de Información</span><span class="lang en hidden">Information Flow</span></h3>
                 <p>
-                    <span class="lang es">El ChatBot actúa como asistente recomendando servicios según la consulta del usuario. Al finalizar, redirige al formulario de contacto oficial para cerrar la captación. En esta fase inicial, mediremos el volumen de conversaciones y la tasa de clics hacia el formulario.</span>
-                    <span class="lang en hidden">The ChatBot acts as an assistant recommending services based on user queries. At the end, it redirects to the official contact form to close the lead. In this initial phase, we will measure conversation volume and form click-through rate.</span>
+                    <span class="lang es">El ChatBot actúa como asistente recomendando servicios según la consulta del usuario. Al finalizar, redirige al formulario de contacto oficial para cerrar la captación. Mediremos conversaciones y tasa de clics hacia el formulario.</span>
+                    <span class="lang en hidden">The ChatBot acts as an assistant recommending services based on user queries. At the end, it redirects to the official contact form. We will measure conversation volume and form click-through rates.</span>
                 </p>
             </div>
         </div>
@@ -207,7 +208,7 @@
                 <div class="time-block">
                     <h4><span class="lang es">Semana 6</span><span class="lang en hidden">Week 6</span></h4>
                     <span class="promo-subheader"><span class="lang es">Ajuste Fino y Feedback</span><span class="lang en hidden">Fine-Tuning & Feedback</span></span>
-                    <p><span class="lang es">Fine tuning, ajuste de directrices (Prompting) y feedback sobre la forma de hablar y tono del bot.</span><span class="lang en hidden">Fine tuning, prompting adjustments, and feedback on the bot's tone and way of speaking.</span></p>
+                    <p><span class="lang es">Fine tuning, ajuste de directrices (Prompting) y feedback sobre la forma de hablar y tono.</span><span class="lang en hidden">Fine tuning, prompting adjustments, and feedback on the bot's tone and way of speaking.</span></p>
                 </div>
                 <div class="time-block">
                     <h4><span class="lang es">Semana 7</span><span class="lang en hidden">Week 7</span></h4>
@@ -221,7 +222,7 @@
             <div class="entregables-col">
                 <h3><span class="lang es">Entregables</span><span class="lang en hidden">Deliverables</span></h3>
                 <ul class="custom-list">
-                    <li><span class="lang es"><strong>Software Propio:</strong> Código fuente completo y propiedad intelectual del sistema desarrollado.</span><span class="lang en hidden"><strong>Proprietary Software:</strong> Complete source code and intellectual property.</span></li>
+                    <li><span class="lang es"><strong>Software Propio:</strong> Código fuente completo y propiedad intelectual.</span><span class="lang en hidden"><strong>Proprietary Software:</strong> Complete source code and intellectual property.</span></li>
                     <li><span class="lang es"><strong>Integración WP:</strong> Plugin configurado y Widget de chat funcional.</span><span class="lang en hidden"><strong>WP Integration:</strong> Configured plugin and functional chat Widget.</span></li>
                     <li><span class="lang es"><strong>Motor RAG:</strong> Base de datos vectorial poblada con los contenidos de la web.</span><span class="lang en hidden"><strong>RAG Engine:</strong> Vector database populated with website content.</span></li>
                     <li><span class="lang es"><strong>Documentación:</strong> Manual técnico de arquitectura y manual de usuario.</span><span class="lang en hidden"><strong>Documentation:</strong> Technical architecture manual and user manual.</span></li>
@@ -235,7 +236,7 @@
                     <div class="price-row total"><span>Total</span><span>5.227,20€</span></div>
                 </div>
                 <div class="payment-plan">
-                    <span class="lang es"><strong>Forma de pago:</strong> Plan por hitos técnicos. Activación inicial al firmar, pagos parciales por hitos y cierre tras puesta en producción.</span>
+                    <span class="lang es"><strong>Forma de pago:</strong> Plan por hitos técnicos. Activación inicial al firmar, pagos parciales y cierre tras puesta en producción.</span>
                     <span class="lang en hidden"><strong>Payment plan:</strong> Technical milestone plan. Initial activation on signing, partial payments, and final closing.</span>
                 </div>
             </div>
@@ -243,22 +244,18 @@
 
         <div class="optional-section">
             <h3><span class="lang es">Funcionalidades Opcionales Futuras (Add-ons)</span><span class="lang en hidden">Future Optional Features (Add-ons)</span></h3>
-            <div class="grid-container">
-                <div class="card" style="background: white; border: 1px solid var(--border);">
+            <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="card optional-card">
                     <h3><span class="lang es">Lead Capture Integrado</span><span class="lang en hidden">Integrated Lead Capture</span></h3>
                     <p><span class="lang es">Captura de datos directamente dentro del chat sin redirigir a formularios externos, con volcado automático a CRM vía API.</span><span class="lang en hidden">Direct data capture within the chat without redirects, with automatic sync to CRM via API.</span></p>
                 </div>
-                <div class="card" style="background: white; border: 1px solid var(--border);">
+                <div class="card optional-card">
                     <h3><span class="lang es">Dashboard de Analítica</span><span class="lang en hidden">Analytics Dashboard</span></h3>
                     <p><span class="lang es">Panel visual para monitorizar preguntas más frecuentes, temas populares y análisis de satisfacción del usuario en tiempo real.</span><span class="lang en hidden">Visual dashboard to monitor FAQs, popular topics, and real-time user satisfaction analysis.</span></p>
                 </div>
-                <div class="card" style="background: white; border: 1px solid var(--border);">
+                <div class="card optional-card">
                     <h3><span class="lang es">Interfaz de Voz</span><span class="lang en hidden">Voice Interface</span></h3>
                     <p><span class="lang es">Botón de micrófono para que el usuario realice consultas por voz (Web Speech API) y reciba respuestas habladas.</span><span class="lang en hidden">Microphone button for voice queries (Web Speech API) with spoken responses.</span></p>
-                </div>
-                <div class="card" style="background: white; border: 1px solid var(--border);">
-                    <h3><span class="lang es">Soporte Multiidioma</span><span class="lang en hidden">Multi-language Support</span></h3>
-                    <p><span class="lang es">Detección automática del idioma del usuario y capacidad del bot para responder nativamente en Inglés, Francés o Alemán.</span><span class="lang en hidden">Automatic language detection and native bot responses in English, French, or German.</span></p>
                 </div>
             </div>
         </div>
